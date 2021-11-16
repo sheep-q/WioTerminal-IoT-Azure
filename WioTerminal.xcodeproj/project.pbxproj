@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
+		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
+		E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */; };
+		E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286602743356D005599BF /* WioTerminalApp.swift */; };
+		E3F286632743356D005599BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286622743356D005599BF /* ContentView.swift */; };
+		E3F286652743356F005599BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286642743356F005599BF /* Assets.xcassets */; };
+		E3F286682743356F005599BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286672743356F005599BF /* Preview Assets.xcassets */; };
+		E3F28670274335B0005599BF /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2866F274335B0005599BF /* FirstView.swift */; };
+		E3F28672274335EF005599BF /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F28671274335EF005599BF /* SecondView.swift */; };
+		E3F2867427433626005599BF /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867327433626005599BF /* ThirdView.swift */; };
+		E3F2867627434F7D005599BF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867527434F7D005599BF /* ProfileView.swift */; };
+		E3F2867927435170005599BF /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867827435170005599BF /* Color+extension.swift */; };
+		E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867E27436EC7005599BF /* ProfileModel.swift */; };
+		E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2868027436F2D005599BF /* ProfileViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
+		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTemplateAPI.swift; sourceTree = "<group>"; };
+		E3F2865D2743356D005599BF /* WioTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WioTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F286602743356D005599BF /* WioTerminalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WioTerminalApp.swift; sourceTree = "<group>"; };
+		E3F286622743356D005599BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E3F286642743356F005599BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3F286672743356F005599BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E3F2866F274335B0005599BF /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		E3F28671274335EF005599BF /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		E3F2867327433626005599BF /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		E3F2867527434F7D005599BF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E3F2867827435170005599BF /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
+		E3F2867E27436EC7005599BF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		E3F2868027436F2D005599BF /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3F2865A2743356D005599BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E34818062743C35E005D63E3 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				E34818072743C36F005D63E3 /* APIConstant.swift */,
+				E34818092743DBD0005D63E3 /* ApiManager.swift */,
+				E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		E3F286542743356D005599BF = {
+			isa = PBXGroup;
+			children = (
+				E3F2865F2743356D005599BF /* WioTerminal */,
+				E3F2865E2743356D005599BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3F2865E2743356D005599BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2865D2743356D005599BF /* WioTerminal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3F2865F2743356D005599BF /* WioTerminal */ = {
+			isa = PBXGroup;
+			children = (
+				E3F286602743356D005599BF /* WioTerminalApp.swift */,
+				E34818062743C35E005D63E3 /* Api */,
+				E3F2867D27436EAF005599BF /* Model */,
+				E3F2867727435157005599BF /* Extension */,
+				E3F2866E2743358B005599BF /* View */,
+				E3F286642743356F005599BF /* Assets.xcassets */,
+				E3F286662743356F005599BF /* Preview Content */,
+			);
+			path = WioTerminal;
+			sourceTree = "<group>";
+		};
+		E3F286662743356F005599BF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E3F286672743356F005599BF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E3F2866E2743358B005599BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E3F286622743356D005599BF /* ContentView.swift */,
+				E3F2867C27436EA2005599BF /* FirstView */,
+				E3F2867B27436E95005599BF /* SecondView */,
+				E3F2867A27436E86005599BF /* ThirdView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E3F2867727435157005599BF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2867827435170005599BF /* Color+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E3F2867A27436E86005599BF /* ThirdView */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2867327433626005599BF /* ThirdView.swift */,
+				E3F2867527434F7D005599BF /* ProfileView.swift */,
+				E3F2868027436F2D005599BF /* ProfileViewModel.swift */,
+			);
+			path = ThirdView;
+			sourceTree = "<group>";
+		};
+		E3F2867B27436E95005599BF /* SecondView */ = {
+			isa = PBXGroup;
+			children = (
+				E3F28671274335EF005599BF /* SecondView.swift */,
+			);
+			path = SecondView;
+			sourceTree = "<group>";
+		};
+		E3F2867C27436EA2005599BF /* FirstView */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2866F274335B0005599BF /* FirstView.swift */,
+			);
+			path = FirstView;
+			sourceTree = "<group>";
+		};
+		E3F2867D27436EAF005599BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E3F2867E27436EC7005599BF /* ProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3F2865C2743356D005599BF /* WioTerminal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3F2866B2743356F005599BF /* Build configuration list for PBXNativeTarget "WioTerminal" */;
+			buildPhases = (
+				E3F286592743356D005599BF /* Sources */,
+				E3F2865A2743356D005599BF /* Frameworks */,
+				E3F2865B2743356D005599BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WioTerminal;
+			productName = WioTerminal;
+			productReference = E3F2865D2743356D005599BF /* WioTerminal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3F286552743356D005599BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					E3F2865C2743356D005599BF = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = E3F286582743356D005599BF /* Build configuration list for PBXProject "WioTerminal" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E3F286542743356D005599BF;
+			productRefGroup = E3F2865E2743356D005599BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3F2865C2743356D005599BF /* WioTerminal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E3F2865B2743356D005599BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F286682743356F005599BF /* Preview Assets.xcassets in Resources */,
+				E3F286652743356F005599BF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3F286592743356D005599BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F286632743356D005599BF /* ContentView.swift in Sources */,
+				E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */,
+				E3F2867427433626005599BF /* ThirdView.swift in Sources */,
+				E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */,
+				E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */,
+				E3F2867927435170005599BF /* Color+extension.swift in Sources */,
+				E3F28670274335B0005599BF /* FirstView.swift in Sources */,
+				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
+				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
+				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
+				E34818082743C36F005D63E3 /* APIConstant.swift in Sources */,
+				E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E3F286692743356F005599BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E3F2866A2743356F005599BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E3F2866C2743356F005599BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WioTerminal/Preview Content\"";
+				DEVELOPMENT_TEAM = 8L3V3NJFVJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.sheepofG.WioTerminal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E3F2866D2743356F005599BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WioTerminal/Preview Content\"";
+				DEVELOPMENT_TEAM = 8L3V3NJFVJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.sheepofG.WioTerminal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3F286582743356D005599BF /* Build configuration list for PBXProject "WioTerminal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3F286692743356F005599BF /* Debug */,
+				E3F2866A2743356F005599BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3F2866B2743356F005599BF /* Build configuration list for PBXNativeTarget "WioTerminal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3F2866C2743356F005599BF /* Debug */,
+				E3F2866D2743356F005599BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3F286552743356D005599BF /* Project object */;
+}
