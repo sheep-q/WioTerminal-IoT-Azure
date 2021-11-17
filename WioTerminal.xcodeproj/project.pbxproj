@@ -10,6 +10,7 @@
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
 		E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */; };
+		E34818162745226D005D63E3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E34818152745226D005D63E3 /* SwiftUICharts */; };
 		E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286602743356D005599BF /* WioTerminalApp.swift */; };
 		E3F286632743356D005599BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286622743356D005599BF /* ContentView.swift */; };
 		E3F286652743356F005599BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286642743356F005599BF /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E34818162745226D005D63E3 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +171,9 @@
 			dependencies = (
 			);
 			name = WioTerminal;
+			packageProductDependencies = (
+				E34818152745226D005D63E3 /* SwiftUICharts */,
+			);
 			productName = WioTerminal;
 			productReference = E3F2865D2743356D005599BF /* WioTerminal.app */;
 			productType = "com.apple.product-type.application";
@@ -197,6 +202,9 @@
 				Base,
 			);
 			mainGroup = E3F286542743356D005599BF;
+			packageReferences = (
+				E34818142745226D005D63E3 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = E3F2865E2743356D005599BF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,6 +447,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E34818142745226D005D63E3 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = exactVersion;
+				version = 1.5.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E34818152745226D005D63E3 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E34818142745226D005D63E3 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E3F286552743356D005599BF /* Project object */;
 }
