@@ -14,9 +14,9 @@ enum APIError: Error {
 
 class DeviceTemplateAPI {
     
-    func getDeviceTemplate(completion: @escaping((Result<T, APIError>) -> Void)) {
-        request(endPoint: .getDeviceTemplate, method: .GET, completion: completion)
-    }
+//    func getDeviceTemplate(completion: @escaping((Result<T, APIError>) -> Void)) {
+//        request(endPoint: .getDeviceTemplate, method: .GET, completion: completion)
+//    }
     
     private func request<T: Codable>(endPoint: Endpoint,
                                      method: Method,
