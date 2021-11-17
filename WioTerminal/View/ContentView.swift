@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TabView {
-                FirstView()
+                TelemetryView()
                     .tabItem {
                         Image(systemName: "house")
                         Text("First View")

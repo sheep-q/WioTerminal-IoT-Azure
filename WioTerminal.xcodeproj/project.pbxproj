@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CB8F3274408B80009A2A1 /* Telemetry.swift */; };
+		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
 		E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */; };
@@ -15,7 +17,7 @@
 		E3F286632743356D005599BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286622743356D005599BF /* ContentView.swift */; };
 		E3F286652743356F005599BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286642743356F005599BF /* Assets.xcassets */; };
 		E3F286682743356F005599BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286672743356F005599BF /* Preview Assets.xcassets */; };
-		E3F28670274335B0005599BF /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2866F274335B0005599BF /* FirstView.swift */; };
+		E3F28670274335B0005599BF /* TelemetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2866F274335B0005599BF /* TelemetryView.swift */; };
 		E3F28672274335EF005599BF /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F28671274335EF005599BF /* SecondView.swift */; };
 		E3F2867427433626005599BF /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867327433626005599BF /* ThirdView.swift */; };
 		E3F2867627434F7D005599BF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2867527434F7D005599BF /* ProfileView.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		463CB8F3274408B80009A2A1 /* Telemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
+		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
 		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTemplateAPI.swift; sourceTree = "<group>"; };
@@ -33,7 +37,7 @@
 		E3F286622743356D005599BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E3F286642743356F005599BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3F286672743356F005599BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E3F2866F274335B0005599BF /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		E3F2866F274335B0005599BF /* TelemetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryView.swift; sourceTree = "<group>"; };
 		E3F28671274335EF005599BF /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		E3F2867327433626005599BF /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		E3F2867527434F7D005599BF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E3F286622743356D005599BF /* ContentView.swift */,
-				E3F2867C27436EA2005599BF /* FirstView */,
+				E3F2867C27436EA2005599BF /* TelemetryView */,
 				E3F2867B27436E95005599BF /* SecondView */,
 				E3F2867A27436E86005599BF /* ThirdView */,
 			);
@@ -139,18 +143,20 @@
 			path = SecondView;
 			sourceTree = "<group>";
 		};
-		E3F2867C27436EA2005599BF /* FirstView */ = {
+		E3F2867C27436EA2005599BF /* TelemetryView */ = {
 			isa = PBXGroup;
 			children = (
-				E3F2866F274335B0005599BF /* FirstView.swift */,
+				E3F2866F274335B0005599BF /* TelemetryView.swift */,
+				468983B52744FC48004B39E6 /* TelemetryViewModel.swift */,
 			);
-			path = FirstView;
+			path = TelemetryView;
 			sourceTree = "<group>";
 		};
 		E3F2867D27436EAF005599BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E3F2867E27436EC7005599BF /* ProfileModel.swift */,
+				463CB8F3274408B80009A2A1 /* Telemetry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,13 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */,
 				E3F286632743356D005599BF /* ContentView.swift in Sources */,
 				E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */,
 				E3F2867427433626005599BF /* ThirdView.swift in Sources */,
 				E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */,
 				E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */,
+				463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */,
 				E3F2867927435170005599BF /* Color+extension.swift in Sources */,
-				E3F28670274335B0005599BF /* FirstView.swift in Sources */,
+				E3F28670274335B0005599BF /* TelemetryView.swift in Sources */,
 				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
