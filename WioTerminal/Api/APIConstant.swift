@@ -12,9 +12,9 @@ struct APIConstant {
     //MARK: - Base domain
     static let subDomain = "wioterminal"
     static let baseDomain = "https://\(subDomain).azureiotcentral.com/api"
-    static let deviceId = "wio_terminal"
+    static let deviceId = "wioTerminal"
     static let deviceTemplateId = "dtmi:modelDefinition:f86ewnoegn:hhdpxfy4dw"
-    static let authorizationString = "SharedAccessSignature sr=abd94bd3-8a1e-43ca-b038-b083a16ebef2&sig=GadOhEWrny8kYORfGvVex14Xbbbx3%2FD6DnummWYgUQw%3D&skn=token11-10&se=1668061647942"
+    static let authorizationString = "SharedAccessSignature sr=f2a5c990-8900-4a68-b779-76c40f515b2d&sig=iCs3HyUggu8HXuvDa0MYY5P9CxVOYJzZ7SNVtaJdQZc%3D&skn=token&se=1668700833396"
 }
 
 struct Path {

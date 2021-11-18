@@ -22,7 +22,6 @@ class ApiManager: ObservableObject {
                                      method: Method,
                                      completion: @escaping((Result<T, APIError>) -> Void)) {
         let pathString = "\(APIConstant.baseDomain)\(path)"
-        print(pathString)
 
         // MARK: -  Heading 
         var components = URLComponents(string: pathString)!

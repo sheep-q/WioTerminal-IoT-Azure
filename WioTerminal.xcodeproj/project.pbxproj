@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4633D2052746507C0062D593 /* BanerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633D2042746507C0062D593 /* BanerView.swift */; };
+		4633D208274653D20062D593 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D207274653D20062D593 /* Nunito-Regular.ttf */; };
+		4633D20A274653DE0062D593 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D209274653DE0062D593 /* Nunito-ExtraBold.ttf */; };
+		4633D20C274653E80062D593 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D20B274653E80062D593 /* Nunito-Light.ttf */; };
+		4633D20E274653F20062D593 /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D20D274653F20062D593 /* Nunito-BoldItalic.ttf */; };
 		463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CB8F3274408B80009A2A1 /* Telemetry.swift */; };
+		464B3E372746614E00264478 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464B3E362746614E00264478 /* Nunito-Bold.ttf */; };
+		464B3E392746747900264478 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464B3E382746747900264478 /* HistoryView.swift */; };
+		467B78D027469161002FC376 /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78CF27469161002FC376 /* MonitorView.swift */; };
+		467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D12746A6B8002FC376 /* DebugPrint.swift */; };
+		467B78D42746A70F002FC376 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D32746A70F002FC376 /* DateTime.swift */; };
 		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
+		468B47DE2745623000571960 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B47DD2745623000571960 /* Constant.swift */; };
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
 		E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */; };
@@ -27,8 +38,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4633D2042746507C0062D593 /* BanerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanerView.swift; sourceTree = "<group>"; };
+		4633D207274653D20062D593 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		4633D209274653DE0062D593 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4633D20B274653E80062D593 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		4633D20D274653F20062D593 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4633D20F274654BD0062D593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		463CB8F3274408B80009A2A1 /* Telemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
+		464B3E362746614E00264478 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		464B3E382746747900264478 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		467B78CF27469161002FC376 /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
+		467B78D12746A6B8002FC376 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
+		467B78D32746A70F002FC376 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
+		468B47DD2745623000571960 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTemplateAPI.swift; sourceTree = "<group>"; };
@@ -58,6 +81,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4633D20327464F520062D593 /* ChildView */ = {
+			isa = PBXGroup;
+			children = (
+				4633D2042746507C0062D593 /* BanerView.swift */,
+				464B3E382746747900264478 /* HistoryView.swift */,
+			);
+			path = ChildView;
+			sourceTree = "<group>";
+		};
+		4633D206274653B70062D593 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				4633D20D274653F20062D593 /* Nunito-BoldItalic.ttf */,
+				4633D207274653D20062D593 /* Nunito-Regular.ttf */,
+				464B3E362746614E00264478 /* Nunito-Bold.ttf */,
+				4633D209274653DE0062D593 /* Nunito-ExtraBold.ttf */,
+				4633D20B274653E80062D593 /* Nunito-Light.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		467B78CE2746905B002FC376 /* MonitorView */ = {
+			isa = PBXGroup;
+			children = (
+				467B78CF27469161002FC376 /* MonitorView.swift */,
+			);
+			path = MonitorView;
+			sourceTree = "<group>";
+		};
+		468B47DC2745621C00571960 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				468B47DD2745623000571960 /* Constant.swift */,
+				467B78D12746A6B8002FC376 /* DebugPrint.swift */,
+				467B78D32746A70F002FC376 /* DateTime.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		E34818062743C35E005D63E3 /* Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,12 +149,15 @@
 		E3F2865F2743356D005599BF /* WioTerminal */ = {
 			isa = PBXGroup;
 			children = (
+				4633D20F274654BD0062D593 /* Info.plist */,
 				E3F286602743356D005599BF /* WioTerminalApp.swift */,
+				468B47DC2745621C00571960 /* Help */,
 				E34818062743C35E005D63E3 /* Api */,
 				E3F2867D27436EAF005599BF /* Model */,
 				E3F2867727435157005599BF /* Extension */,
 				E3F2866E2743358B005599BF /* View */,
 				E3F286642743356F005599BF /* Assets.xcassets */,
+				4633D206274653B70062D593 /* Font */,
 				E3F286662743356F005599BF /* Preview Content */,
 			);
 			path = WioTerminal;
@@ -111,6 +176,7 @@
 			children = (
 				E3F286622743356D005599BF /* ContentView.swift */,
 				E3F2867C27436EA2005599BF /* TelemetryView */,
+				467B78CE2746905B002FC376 /* MonitorView */,
 				E3F2867B27436E95005599BF /* SecondView */,
 				E3F2867A27436E86005599BF /* ThirdView */,
 			);
@@ -148,6 +214,7 @@
 			children = (
 				E3F2866F274335B0005599BF /* TelemetryView.swift */,
 				468983B52744FC48004B39E6 /* TelemetryViewModel.swift */,
+				4633D20327464F520062D593 /* ChildView */,
 			);
 			path = TelemetryView;
 			sourceTree = "<group>";
@@ -225,8 +292,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464B3E372746614E00264478 /* Nunito-Bold.ttf in Resources */,
+				4633D20E274653F20062D593 /* Nunito-BoldItalic.ttf in Resources */,
+				4633D208274653D20062D593 /* Nunito-Regular.ttf in Resources */,
+				4633D20C274653E80062D593 /* Nunito-Light.ttf in Resources */,
 				E3F286682743356F005599BF /* Preview Assets.xcassets in Resources */,
 				E3F286652743356F005599BF /* Assets.xcassets in Resources */,
+				4633D20A274653DE0062D593 /* Nunito-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +311,13 @@
 			files = (
 				468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */,
 				E3F286632743356D005599BF /* ContentView.swift in Sources */,
+				467B78D42746A70F002FC376 /* DateTime.swift in Sources */,
+				4633D2052746507C0062D593 /* BanerView.swift in Sources */,
+				468B47DE2745623000571960 /* Constant.swift in Sources */,
 				E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */,
+				464B3E392746747900264478 /* HistoryView.swift in Sources */,
 				E3F2867427433626005599BF /* ThirdView.swift in Sources */,
+				467B78D027469161002FC376 /* MonitorView.swift in Sources */,
 				E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */,
 				E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */,
 				463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */,
@@ -249,6 +326,7 @@
 				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
+				467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */,
 				E34818082743C36F005D63E3 /* APIConstant.swift in Sources */,
 				E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */,
 			);
@@ -384,6 +462,7 @@
 				DEVELOPMENT_TEAM = 8L3V3NJFVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WioTerminal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -414,6 +493,7 @@
 				DEVELOPMENT_TEAM = 8L3V3NJFVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WioTerminal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

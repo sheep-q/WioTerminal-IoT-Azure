@@ -18,7 +18,7 @@ struct ThirdView: View {
     var body: some View {
         NavigationView {
             GeometryReader { fullView in
-                Color(hex: "e9ecef")
+                Color(hex: Constant.backgroundColor)
                     .ignoresSafeArea(edges: .top)
                 ScrollView {
                     
@@ -84,7 +84,7 @@ struct ThirdView: View {
                             }
                         }
                         .frame(height: 500)
-                        .background(Color(hex: "e9ecef"))
+                        .background(Color(hex: Constant.backgroundColor))
                     }
                 }
             }
