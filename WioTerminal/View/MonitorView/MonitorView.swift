@@ -6,17 +6,26 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct MonitorView: View {
-    
+    @ObservedObject var viewModel = TelemetryViewModel()
     private let width: CGFloat = 165
     private let height: CGFloat = 165
     @State var speakerToggle = false
     @State var lockToggle = false
     @State var pumpToggle = false
+    
+    @State var pushActive = false
     var body: some View {
         NavigationView {
             ZStack {
+//                NavigationLink(destination:
+//                                BarChartView(data: ChartData(values: viewModel.datas), title: "Temperature", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.extraLarge),
+//                               isActive: self.$pushActive) {
+//                    // NA
+//                }.hidden()
+                
                 Color(hex: Constant.backgroundColor)
                     .ignoresSafeArea(edges: .top)
                 
@@ -41,13 +50,22 @@ struct MonitorView: View {
                                         .font(.custom(Font.nunitoRegular, size: 15))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     
-                                    Text("5")
+                                    Text("\(viewModel.temp)")
                                         .font(.custom(Font.nunitoRegular, size: 40))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     + Text("°C")
                                         .font(.custom(Font.nunitoRegular, size: 20))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                 }
+                            }
+                            .gesture(
+                                TapGesture()
+                                    .onEnded { _ in
+                                        pushActive = true
+                                    }
+                            )
+                            .sheet(isPresented: $pushActive) {
+                                BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Temperature", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
                             }
                             
                             Spacer()
@@ -70,7 +88,7 @@ struct MonitorView: View {
                                         .font(.custom(Font.nunitoRegular, size: 15))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     
-                                    Text("30")
+                                    Text("\(viewModel.humi)")
                                         .font(.custom(Font.nunitoRegular, size: 40))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     + Text("%RH")
@@ -99,7 +117,7 @@ struct MonitorView: View {
                                         .font(.custom(Font.nunitoRegular, size: 15))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     
-                                    Text("27")
+                                    Text("\(viewModel.light)")
                                         .font(.custom(Font.nunitoRegular, size: 40))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     + Text("%")
@@ -215,6 +233,7 @@ struct MonitorView: View {
                                     .font(.custom(Font.nunutiBold, size: 50))
                                     .foregroundColor(Color(hex: Constant.greyColor))
                             }
+                            .opacity(0)
                         }.padding(.bottom)
                     // MARK: -  VStack
                     }
@@ -223,11 +242,15 @@ struct MonitorView: View {
             }
             .navigationTitle("Monitor")
         }
+        .onAppear {
+            viewModel.getTelemetry()
+            viewModel.postQuery()
+        }
     }
 }
 
 struct MonitorView_Previews: PreviewProvider {
     static var previews: some View {
-        MonitorView()
+        MonitorView(viewModel: TelemetryViewModel())
     }
 }

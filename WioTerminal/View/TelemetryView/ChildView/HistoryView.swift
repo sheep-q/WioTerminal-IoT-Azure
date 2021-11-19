@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct HistoryView: View {
+    
+    @State var temp: Double
+    @State var humi: Double
+    @State var time: String
+    
+    init (temp: Double,
+          humi: Double,
+          time: String) {
+        self.temp = temp
+        self.humi = humi
+        self.time = time
+    }
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
@@ -16,22 +29,22 @@ struct HistoryView: View {
                 .padding(.horizontal)
                 .shadow(color: Color(hex: "e5e5e5"), radius: 2, x: -1, y: 1.5)
             
-            Text("15h.30")
+            Text(time)
                 .font(.custom(Font.nunitoLight, size: 13))
-                .foregroundColor(.black)
+                .foregroundColor(Color(hex: Constant.greyColor))
             
             VStack {
                 Spacer()
-                Text("5°C")
+                Text("\(Int(temp))\(Constant.doC)")
                     .font(.custom(Font.nunitoRegular, size: 20))
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(hex: Constant.greyColor))
                     .offset(x: -30)
                 
                 Spacer().frame(height: 45)
                 
-                Text("30%RH")
+                Text("\(Int(humi))%RH")
                     .font(.custom(Font.nunitoRegular, size: 20))
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(hex: Constant.greyColor))
                     .offset(x: 15)
                 Spacer()
             }
@@ -41,6 +54,6 @@ struct HistoryView: View {
 
 struct historyView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        HistoryView(temp: 0, humi: 0, time: "")
     }
 }

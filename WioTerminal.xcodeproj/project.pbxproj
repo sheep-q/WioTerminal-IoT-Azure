@@ -18,11 +18,11 @@
 		467B78D027469161002FC376 /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78CF27469161002FC376 /* MonitorView.swift */; };
 		467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D12746A6B8002FC376 /* DebugPrint.swift */; };
 		467B78D42746A70F002FC376 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D32746A70F002FC376 /* DateTime.swift */; };
+		467B78D62746BBCB002FC376 /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D52746BBCB002FC376 /* QueryModel.swift */; };
 		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
 		468B47DE2745623000571960 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B47DD2745623000571960 /* Constant.swift */; };
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
-		E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */; };
 		E34818162745226D005D63E3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E34818152745226D005D63E3 /* SwiftUICharts */; };
 		E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286602743356D005599BF /* WioTerminalApp.swift */; };
 		E3F286632743356D005599BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286622743356D005599BF /* ContentView.swift */; };
@@ -50,11 +50,11 @@
 		467B78CF27469161002FC376 /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
 		467B78D12746A6B8002FC376 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
 		467B78D32746A70F002FC376 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		467B78D52746BBCB002FC376 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
 		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
 		468B47DD2745623000571960 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTemplateAPI.swift; sourceTree = "<group>"; };
 		E3F2865D2743356D005599BF /* WioTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WioTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F286602743356D005599BF /* WioTerminalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WioTerminalApp.swift; sourceTree = "<group>"; };
 		E3F286622743356D005599BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,7 +125,6 @@
 			children = (
 				E34818072743C36F005D63E3 /* APIConstant.swift */,
 				E34818092743DBD0005D63E3 /* ApiManager.swift */,
-				E348180B2743DE43005D63E3 /* DeviceTemplateAPI.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -177,8 +176,8 @@
 				E3F286622743356D005599BF /* ContentView.swift */,
 				E3F2867C27436EA2005599BF /* TelemetryView */,
 				467B78CE2746905B002FC376 /* MonitorView */,
-				E3F2867B27436E95005599BF /* SecondView */,
 				E3F2867A27436E86005599BF /* ThirdView */,
+				E3F2867B27436E95005599BF /* SecondView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +223,7 @@
 			children = (
 				E3F2867E27436EC7005599BF /* ProfileModel.swift */,
 				463CB8F3274408B80009A2A1 /* Telemetry.swift */,
+				467B78D52746BBCB002FC376 /* QueryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,7 +319,6 @@
 				E3F2867427433626005599BF /* ThirdView.swift in Sources */,
 				467B78D027469161002FC376 /* MonitorView.swift in Sources */,
 				E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */,
-				E348180C2743DE43005D63E3 /* DeviceTemplateAPI.swift in Sources */,
 				463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */,
 				E3F2867927435170005599BF /* Color+extension.swift in Sources */,
 				E3F28670274335B0005599BF /* TelemetryView.swift in Sources */,
@@ -327,6 +326,7 @@
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
 				467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */,
+				467B78D62746BBCB002FC376 /* QueryModel.swift in Sources */,
 				E34818082743C36F005D63E3 /* APIConstant.swift in Sources */,
 				E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */,
 			);

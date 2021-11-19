@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct TelemetryView: View {
     
@@ -43,7 +44,8 @@ struct TelemetryView: View {
                         .padding()
                         .padding(.horizontal, 10)
                         
-                        BanerView(temp: 5, humi: 30, connectionString: "đã kết nối", statusString: "bảo quản tốt")
+                        // MARK: -  BanerView
+                        BanerView(viewModel: self.viewModel, connectionString: "đã kết nối", statusString: "bảo quản tốt")
                         
                         HStack {
                             Text("Lịch sử 10p trước")
@@ -53,13 +55,21 @@ struct TelemetryView: View {
                             Spacer()
                         }
                         .padding(.horizontal)
-                        .offset(y: 10)
+                        .padding(.top, 20)
+                        
+                        HStack {
+                            BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Nhiệt độ", legend: Constant.doC, style: Styles.barChartStyleOrangeLight, form: ChartForm.medium, dropShadow: false)
+                            BarChartView(data: ChartData(values: viewModel.humiDatas), title: "Độ ẩm",legend: "%RH", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.medium, dropShadow: false)
+                        }
+                        .padding(.horizontal)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(0..<10) { index in
+                                ForEach(viewModel.queryItems, id: \.self ) { item in
                                     GeometryReader { geo in
-                                        HistoryView()
+                                        HistoryView(temp: item.temp ?? 0,
+                                                    humi: item.humi ?? 0,
+                                                    time: convertToHour(string: item.time))
                                     }
                                     .frame(width: 122)
                                 }
@@ -73,9 +83,10 @@ struct TelemetryView: View {
                 }
             }
             .navigationTitle("Wio Terminal")
-        }
-        .onAppear {
-            viewModel.getTelemetry()
+            .onAppear {
+                viewModel.getTelemetry()
+                viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P1D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
+            }
         }
     }
 }

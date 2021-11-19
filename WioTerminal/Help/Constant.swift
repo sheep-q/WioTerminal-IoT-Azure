@@ -8,6 +8,9 @@
 import Foundation
 
 final class Constant {
+    
+    static let doC = "°C"
+    
     static let backgroundColor = "f4f3ee"
     static let profileBackgroundColor = "590d22"
     static let greyColor = "47525E"

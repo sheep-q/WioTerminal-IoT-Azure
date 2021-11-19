@@ -20,7 +20,7 @@ struct ThirdView: View {
             GeometryReader { fullView in
                 Color(hex: Constant.backgroundColor)
                     .ignoresSafeArea(edges: .top)
-                ScrollView {
+                ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack {                        
                         ScrollView(.horizontal, showsIndicators: false) {
