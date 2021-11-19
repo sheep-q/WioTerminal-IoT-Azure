@@ -11,16 +11,17 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TabView {
-                FirstView()
+                
+                TelemetryView()
                     .tabItem {
                         Image(systemName: "house")
                         Text("First View")
                     }
                 
-                SecondView()
+                MonitorView()
                     .tabItem {
-                        Image(systemName: "chart.bar")
-                        Text("Second View")
+                        Image(systemName: "cloud")
+                        Text("Zero View")
                     }
                 
                 ThirdView()

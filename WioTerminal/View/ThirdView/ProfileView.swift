@@ -18,12 +18,9 @@ struct ProfileView: View {
     var body: some View {
         
         ZStack {
-            Color(hex: "590d22")
+            Color(hex: Constant.profileBackgroundColor)
                 .frame(width: 350, height: 520)
                 .cornerRadius(25)
-            
-            
-            
             VStack{
                 
                 Image("logoHust")
@@ -45,7 +42,7 @@ struct ProfileView: View {
                     .scaledToFit()
                     .clipShape(Circle())
                     .frame(width: width)
-                    .overlay(Circle().stroke(Color(hex: "e85d04"), lineWidth: 7))
+                    .overlay(Circle().stroke(Color(hex: "ff9f1c"), lineWidth: 7))
                 
                 Text(text)
                     .font(.headline)
