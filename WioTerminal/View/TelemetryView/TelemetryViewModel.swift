@@ -13,10 +13,30 @@ class TelemetryViewModel: ObservableObject {
     @Published var humi: Int = 0
     @Published var light: Int = 0
     @Published var soil: Int = 0
+    
     @Published var queryItems = [Item]()
     @Published var tempItems: [Double] = []
     @Published var tempDatas: [(String, Double)] = []
     @Published var humiDatas: [(String, Double)] = []
+    @Published var offsetY: CGFloat = 0
+    
+    @Published var specialRequestEnabled = false {
+        didSet {
+            if specialRequestEnabled {
+                offsetY = 200
+            } else {
+                offsetY = 0
+            }
+        }
+    }
+    
+    @Published var number = 6
+    @Published var time = 1
+    @Published var day = 0
+   
+    static let numbers = [1, 2, 5, 10, 15, 20, 30, 45, 60]
+    static let times = ["giây(s)", "phút(m)", "giờ"]
+    static let days = [1,2,3,4,5,6,7]
     
     func getTelemetry() {
         ApiManager.shared.getTelemetry(telemetry: "temp") {
@@ -63,8 +83,8 @@ class TelemetryViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.queryItems = telemetry.results
                     self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
-                    printDebug(self.tempItems)
                     self.tempDatas = []
+                    self.humiDatas = []
                     for item in self.queryItems {
                         let time: String = convertToDate(string: item.time)
                         self.tempDatas.append((time, item.temp ?? 0))
@@ -75,6 +95,7 @@ class TelemetryViewModel: ObservableObject {
                 }
             case let .failure(err):
                 print("failed")
+                printDebug("body: \(body)")
                 print(err.localizedDescription)
             }
         }

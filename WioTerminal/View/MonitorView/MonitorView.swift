@@ -15,6 +15,7 @@ struct MonitorView: View {
     @State var speakerToggle = false
     @State var lockToggle = false
     @State var pumpToggle = false
+    @State var viewDidLoad = false
     
     @State var pushActive = false
     var body: some View {
@@ -65,7 +66,8 @@ struct MonitorView: View {
                                     }
                             )
                             .sheet(isPresented: $pushActive) {
-                                BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Temperature", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                                DetailTelemery(viewModel: self.viewModel, navigationTitle: "Nhiệt độ")
+                                //BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Temperature", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
                             }
                             
                             Spacer()
@@ -243,8 +245,12 @@ struct MonitorView: View {
             .navigationTitle("Monitor")
         }
         .onAppear {
-            viewModel.getTelemetry()
-            viewModel.postQuery()
+            if !viewDidLoad {
+                print("Load")
+                viewDidLoad = true
+                viewModel.getTelemetry()
+                viewModel.postQuery()
+            }
         }
     }
 }
