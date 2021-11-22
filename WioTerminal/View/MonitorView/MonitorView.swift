@@ -15,6 +15,7 @@ struct MonitorView: View {
     @State var speakerToggle = false
     @State var lockToggle = false
     @State var pumpToggle = false
+    @State var viewDidLoad = false
     
     @State var pushActive = false
     var body: some View {
@@ -243,8 +244,12 @@ struct MonitorView: View {
             .navigationTitle("Monitor")
         }
         .onAppear {
-            viewModel.getTelemetry()
-            viewModel.postQuery()
+            if !viewDidLoad {
+                print("Load")
+                viewDidLoad = true
+                viewModel.getTelemetry()
+                viewModel.postQuery()
+            }
         }
     }
 }
