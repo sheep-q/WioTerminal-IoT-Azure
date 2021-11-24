@@ -15,17 +15,27 @@ enum APIError: Error {
 class ApiManager: ObservableObject {
     static var shared = ApiManager()
     
-    func getTelemetry(telemetry: String, completion: @escaping((Result<Telemetry, APIError>) -> Void)) {
+    // MARK: -  post command
+    func postBuzzerCommand(body: String, completion: @escaping((Result<PostCommandModel?, APIError>) -> Void )) {
+        request(path: Path.postBuzzerCommand, method: .POST, body: body, isCommand: true, completion: completion)
+    }
+    
+    // MARK: -  get Telemetry
+    func getTelemetry(telemetry: String, completion: @escaping((Result<Telemetry?, APIError>) -> Void)) {
         request(path: Path.getTelemetry + "/\(telemetry)", method: .GET, completion: completion)
     }
     
-    func postQuery(body: String, completion: @escaping((Result<QueryModel, APIError>) -> Void)) {
+    // MARK: -  post Query
+    func postQuery(body: String, completion: @escaping((Result<QueryModel?, APIError>) -> Void)) {
         request(path: Path.postQuery, method: .POST, body: body, completion: completion)
     }
+    
+    // MARK: -  request
     private func request<T: Codable>(path: String,
                                      method: Method,
                                      body: String? = nil,
-                                     completion: @escaping((Result<T, APIError>) -> Void)) {
+                                     isCommand: Bool = false,
+                                     completion: @escaping((Result<T?, APIError>) -> Void)) {
         let pathString = "\(APIConstant.baseDomain)\(path)"
         
         // MARK: - parameter
@@ -44,14 +54,20 @@ class ApiManager: ObservableObject {
         // MARK: -  Authorization
         request.addValue("\(APIConstant.authorizationString)", forHTTPHeaderField: "Authorization")
         request.addValue(" application/json; charset=utf-8", forHTTPHeaderField:"Content-Type")
-
-
         
         // body json
         if let body = body {
-            let json: [String: Any] = ["query": body]
-            let jsonData = try? JSONSerialization.data(withJSONObject: json)
-            request.httpBody = jsonData
+            if !isCommand {
+                let json: [String: Any] = ["query": body]
+                let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                request.httpBody = jsonData
+            } else {
+                if let number = Int(body) {
+                    let json: [String: Any] = ["request": number]
+                    let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                    request.httpBody = jsonData
+                }
+            }
         }
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -73,6 +89,7 @@ class ApiManager: ObservableObject {
             
             do {
                 let object = try JSONDecoder().decode(T.self, from: data)
+                //printDebug(object)
                 completion(Result.success(object))
             } catch {
                 completion(.failure(.internalError))

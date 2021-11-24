@@ -12,12 +12,14 @@ struct MonitorView: View {
     @ObservedObject var viewModel = TelemetryViewModel()
     private let width: CGFloat = 165
     private let height: CGFloat = 165
-    @State var speakerToggle = false
-    @State var lockToggle = false
-    @State var pumpToggle = false
-    @State var viewDidLoad = false
+    @State private var speakerToggle = false
+    @State private var lockToggle = false
+    @State private var pumpToggle = false
+    @State private var viewDidLoad = false
     
-    @State var pushActive = false
+    @State var pushTempDetailViewActive = false
+    @State var pushHumiDetailViewActive = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -62,11 +64,11 @@ struct MonitorView: View {
                             .gesture(
                                 TapGesture()
                                     .onEnded { _ in
-                                        pushActive = true
+                                        pushTempDetailViewActive = true
                                     }
                             )
-                            .sheet(isPresented: $pushActive) {
-                                BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Temperature", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                            .sheet(isPresented: $pushTempDetailViewActive) {
+                                DetailTelemery(viewModel: self.viewModel, navigationTitle: .temp)
                             }
                             
                             Spacer()
@@ -96,6 +98,15 @@ struct MonitorView: View {
                                         .font(.custom(Font.nunitoRegular, size: 20))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                 }
+                            }
+                            .gesture(
+                                TapGesture()
+                                    .onEnded { _ in
+                                        pushHumiDetailViewActive = true
+                                    }
+                            )
+                            .sheet(isPresented: $pushHumiDetailViewActive) {
+                                DetailTelemery(viewModel: self.viewModel, navigationTitle: .humi)
                             }
                         }
                         .padding(.bottom)
@@ -147,10 +158,29 @@ struct MonitorView: View {
                                         .font(.custom(Font.nunitoRegular, size: 15))
                                         .foregroundColor(Color(hex: Constant.greyColor))
                                     
-                                    Toggle(isOn: $speakerToggle) {
-                                        Text("")
+                                    if #available(iOS 15.0, *) {
+                                        ZStack {
+                                            Toggle(isOn: $speakerToggle) {
+                                                Text("")
+                                            }
+                                            .offset(x: -65)
+                                            .opacity(viewModel.requestBuzzerCommandAlert == .requesting ? 0 : 1)
+                                            //.disabled(viewModel.requestBuzzerCommandAlert == .requesting ? true : false)
+                                            .alert("Nhạc đã tắt", isPresented: $viewModel.isShowingBuzzerCommandAlert) {
+                                                Button("OK", role: .cancel) {
+                                                    viewModel.requestBuzzerCommandAlert = .notRequest
+                                                }
+                                            }
+                                            
+                                            Text("Đang phát nhạc...")
+                                                .font(.custom(Font.nunitoRegular, size: 13))
+                                                .foregroundColor(Color.green)
+                                                .opacity(viewModel.requestBuzzerCommandAlert == .requesting ? 1 : 0)
+                                        }
+                                    } else {
+                                        // Fallback on earlier versions
+                                        //printDebug("ios15 required")
                                     }
-                                    .offset(x: -65)
                                 }
                             }
                         }.padding(.bottom)
@@ -234,6 +264,18 @@ struct MonitorView: View {
                                     .font(.custom(Font.nunutiBold, size: 50))
                                     .foregroundColor(Color(hex: Constant.greyColor))
                             }
+                            .alert(isPresented: $speakerToggle,
+                                   TextAlert(title: "Thời lượng bật nhạc",
+                                             message: "Đơn vị giây(s)",
+                                             keyboardType: .numberPad) { result in
+                                if let time = result {
+                                    viewModel.requestBuzzerCommandAlert = .requesting
+                                    viewModel.postBuzzerCommand(body: time)
+                                } else {
+                                    // The dialog was cancelled
+                                    print("dissmiss")
+                                }
+                            })
                             .opacity(0)
                         }.padding(.bottom)
                     // MARK: -  VStack

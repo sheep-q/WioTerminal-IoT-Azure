@@ -59,11 +59,13 @@ struct TelemetryView: View {
                         }
                         .padding(.horizontal, 30)
                         .offset(y: 5)
-
-                        List {
+                        
+                        Form {
                             Section(header: Text("Lịch sử")) {
                                 Toggle(isOn: $viewModel.specialRequestEnabled.animation()) {
-                                    Text("Any special requests?")
+                                    Text("Đặt lại thông số biểu đồ")
+                                        .font(.custom(Font.nunitoRegular, size: 18))
+                                        .foregroundColor(Color.black)
                                 }
                                 
                                 if viewModel.specialRequestEnabled {
@@ -82,19 +84,32 @@ struct TelemetryView: View {
                                     Picker("Trong vòng ngày ", selection: $viewModel.day) {
                                         ForEach(0..<TelemetryViewModel.days.count, id: \.self) {
                                             Text("\(TelemetryViewModel.days[$0])")
+                                            
                                         }
                                     }
+                                    
                                     HStack {
                                         Spacer()
-                                        Button("Phân tích") {
-                                            viewModel.specialRequestEnabled.toggle()
+                                        
+                                        Button {
+                                            let number = TelemetryViewModel.numbers[viewModel.number]
+                                            let time = TelemetryViewModel.times[viewModel.time]
+                                            let day = TelemetryViewModel.days[viewModel.day]
+                                            
+                                            let body = APIConstant.getBody(number: number, time: time, day: day)
+                                            viewModel.postQuery(body: body)
+                                        } label: {
+                                            Text("Phân tích")
+                                                .font(.custom(Font.nunitoBoldItalic, size: 18))
+                                                .foregroundColor(Color(hex: Constant.paletteRedColor))
                                         }
                                         Spacer()
                                     }
                                 }
                             }
+                            .foregroundColor(Color(hex: Constant.greyColor))
                         }
-                        .frame(height: 300)
+                        .frame(height: 350)
                         .offset(y: -20)
                         .background(Color(hex: Constant.backgroundColor))
                         
@@ -112,7 +127,7 @@ struct TelemetryView: View {
                         }
                         .frame(height: 133)
                         .padding(.horizontal)
-                        .offset(y: -200 + viewModel.offsetY)
+                        .offset(y: -250 + viewModel.offsetY)
                         
                         Spacer()
                     }
@@ -120,12 +135,14 @@ struct TelemetryView: View {
             }
             .navigationTitle("Wio Terminal")
         }
-        .onAppear {if !viewDidLoad {
-            print("Load")
-            viewDidLoad = true
-            viewModel.getTelemetry()
-            viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P4D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
-        }
+        .onAppear {
+            if !viewDidLoad {
+                print("Load")
+                viewDidLoad = true
+                viewModel.getTelemetry()
+                viewModel.postQuery()
+                //viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P4D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
+            }
         }
     }
 }
