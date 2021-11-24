@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46167CA8274BFD3A00FA2169 /* AlertVC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167CA7274BFD3A00FA2169 /* AlertVC+.swift */; };
 		4633D2052746507C0062D593 /* BanerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633D2042746507C0062D593 /* BanerView.swift */; };
 		4633D208274653D20062D593 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D207274653D20062D593 /* Nunito-Regular.ttf */; };
 		4633D20A274653DE0062D593 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4633D209274653DE0062D593 /* Nunito-ExtraBold.ttf */; };
@@ -21,9 +22,11 @@
 		467B78D62746BBCB002FC376 /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D52746BBCB002FC376 /* QueryModel.swift */; };
 		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
 		468B47DE2745623000571960 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B47DD2745623000571960 /* Constant.swift */; };
+		46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */; };
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
 		E34818162745226D005D63E3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E34818152745226D005D63E3 /* SwiftUICharts */; };
+		E3D5A1F5274BC19700495E77 /* DetailTelemery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5A1F4274BC19700495E77 /* DetailTelemery.swift */; };
 		E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286602743356D005599BF /* WioTerminalApp.swift */; };
 		E3F286632743356D005599BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F286622743356D005599BF /* ContentView.swift */; };
 		E3F286652743356F005599BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F286642743356F005599BF /* Assets.xcassets */; };
@@ -38,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46167CA7274BFD3A00FA2169 /* AlertVC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertVC+.swift"; sourceTree = "<group>"; };
 		4633D2042746507C0062D593 /* BanerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanerView.swift; sourceTree = "<group>"; };
 		4633D207274653D20062D593 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		4633D209274653DE0062D593 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -53,8 +57,10 @@
 		467B78D52746BBCB002FC376 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
 		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
 		468B47DD2745623000571960 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommandModel.swift; sourceTree = "<group>"; };
 		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		E3D5A1F4274BC19700495E77 /* DetailTelemery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTelemery.swift; sourceTree = "<group>"; };
 		E3F2865D2743356D005599BF /* WioTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WioTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F286602743356D005599BF /* WioTerminalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WioTerminalApp.swift; sourceTree = "<group>"; };
 		E3F286622743356D005599BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,11 +87,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46167CA6274BFD1300FA2169 /* TextField-Alert */ = {
+			isa = PBXGroup;
+			children = (
+				46167CA7274BFD3A00FA2169 /* AlertVC+.swift */,
+			);
+			path = "TextField-Alert";
+			sourceTree = "<group>";
+		};
 		4633D20327464F520062D593 /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
 				4633D2042746507C0062D593 /* BanerView.swift */,
 				464B3E382746747900264478 /* HistoryView.swift */,
+				E3D5A1F4274BC19700495E77 /* DetailTelemery.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -186,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				E3F2867827435170005599BF /* Color+extension.swift */,
+				46167CA6274BFD1300FA2169 /* TextField-Alert */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -224,6 +240,7 @@
 				E3F2867E27436EC7005599BF /* ProfileModel.swift */,
 				463CB8F3274408B80009A2A1 /* Telemetry.swift */,
 				467B78D52746BBCB002FC376 /* QueryModel.swift */,
+				46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,8 +338,11 @@
 				E3F2868127436F2D005599BF /* ProfileViewModel.swift in Sources */,
 				463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */,
 				E3F2867927435170005599BF /* Color+extension.swift in Sources */,
+				E3D5A1F5274BC19700495E77 /* DetailTelemery.swift in Sources */,
+				46167CA8274BFD3A00FA2169 /* AlertVC+.swift in Sources */,
 				E3F28670274335B0005599BF /* TelemetryView.swift in Sources */,
 				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
+				46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */,
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
 				467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */,

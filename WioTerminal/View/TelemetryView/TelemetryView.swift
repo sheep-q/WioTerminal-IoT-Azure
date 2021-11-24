@@ -11,6 +11,11 @@ import SwiftUICharts
 struct TelemetryView: View {
     
     @StateObject var viewModel = TelemetryViewModel()
+    @State var viewDidLoad = false
+    
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+    }
     
     var body: some View {
         NavigationView {
@@ -48,20 +53,65 @@ struct TelemetryView: View {
                         BanerView(viewModel: self.viewModel, connectionString: "đã kết nối", statusString: "bảo quản tốt")
                         
                         HStack {
-                            Text("Lịch sử 10p trước")
-                                .foregroundColor(Color(hex: Constant.greyColor))
-                                .font(.custom(Font.nunutiBold, size: 20))
-                                .padding(.leading, 20)
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        .padding(.top, 20)
-                        
-                        HStack {
                             BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Nhiệt độ", legend: Constant.doC, style: Styles.barChartStyleOrangeLight, form: ChartForm.medium, dropShadow: false)
+                            Spacer()
                             BarChartView(data: ChartData(values: viewModel.humiDatas), title: "Độ ẩm",legend: "%RH", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.medium, dropShadow: false)
                         }
-                        .padding(.horizontal)
+                        .padding(.horizontal, 30)
+                        .offset(y: 5)
+                        
+                        Form {
+                            Section(header: Text("Lịch sử")) {
+                                Toggle(isOn: $viewModel.specialRequestEnabled.animation()) {
+                                    Text("Đặt lại thông số biểu đồ")
+                                        .font(.custom(Font.nunitoRegular, size: 18))
+                                        .foregroundColor(Color.black)
+                                }
+                                
+                                if viewModel.specialRequestEnabled {
+                                    Picker("Khoảng cách giữa 2 điểm", selection: $viewModel.number) {
+                                        ForEach(0..<TelemetryViewModel.numbers.count, id: \.self) {
+                                            Text("\(TelemetryViewModel.numbers[$0])")
+                                        }
+                                    }
+                                    
+                                    Picker("Đơn vị thời gian", selection: $viewModel.time) {
+                                        ForEach(0..<TelemetryViewModel.times.count, id: \.self) {
+                                            Text("\(TelemetryViewModel.times[$0])")
+                                        }
+                                    }
+                                    
+                                    Picker("Trong vòng ngày ", selection: $viewModel.day) {
+                                        ForEach(0..<TelemetryViewModel.days.count, id: \.self) {
+                                            Text("\(TelemetryViewModel.days[$0])")
+                                            
+                                        }
+                                    }
+                                    
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Button {
+                                            let number = TelemetryViewModel.numbers[viewModel.number]
+                                            let time = TelemetryViewModel.times[viewModel.time]
+                                            let day = TelemetryViewModel.days[viewModel.day]
+                                            
+                                            let body = APIConstant.getBody(number: number, time: time, day: day)
+                                            viewModel.postQuery(body: body)
+                                        } label: {
+                                            Text("Phân tích")
+                                                .font(.custom(Font.nunitoBoldItalic, size: 18))
+                                                .foregroundColor(Color(hex: Constant.paletteRedColor))
+                                        }
+                                        Spacer()
+                                    }
+                                }
+                            }
+                            .foregroundColor(Color(hex: Constant.greyColor))
+                        }
+                        .frame(height: 350)
+                        .offset(y: -20)
+                        .background(Color(hex: Constant.backgroundColor))
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -77,15 +127,21 @@ struct TelemetryView: View {
                         }
                         .frame(height: 133)
                         .padding(.horizontal)
+                        .offset(y: -250 + viewModel.offsetY)
                         
                         Spacer()
                     }
                 }
             }
             .navigationTitle("Wio Terminal")
-            .onAppear {
+        }
+        .onAppear {
+            if !viewDidLoad {
+                print("Load")
+                viewDidLoad = true
                 viewModel.getTelemetry()
-                viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P1D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
+                viewModel.postQuery()
+                //viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P4D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
             }
         }
     }
