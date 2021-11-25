@@ -12,13 +12,17 @@ final class Constant {
     static let doC = "°C"
     
     static let backgroundColor = "f4f3ee"
-    static let profileBackgroundColor = "590d22"
+    static let profileBackgroundColor = "264653"
     static let greyColor = "47525E"
     
     static let paletteRedColor = "DC3155"
-    static let paletteGreenColor = "19647E"
+    static let paletteGreenColor = "2a9d8f"
     static let paletteYellowColor = "EDAE49"
     static let paletteRedColor1 = "DC3155"
+    
+    static let banerRed = "D1495B"
+    static let banerYellow = "EDAE49"
+    static let banerGreen = "2a9d8f"
 }
 
 

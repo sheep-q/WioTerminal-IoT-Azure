@@ -42,7 +42,7 @@ struct ProfileView: View {
                     .scaledToFit()
                     .clipShape(Circle())
                     .frame(width: width)
-                    .overlay(Circle().stroke(Color(hex: "ff9f1c"), lineWidth: 7))
+                    .overlay(Circle().stroke(Color(hex: "ae2012"), lineWidth: 7))
                 
                 Text(text)
                     .font(.headline)

@@ -15,16 +15,19 @@ enum CommandRequest {
 }
 
 class TelemetryViewModel: ObservableObject {
-    @Published var temp: Int = 0
-    @Published var humi: Int = 0
-    @Published var light: Int = 0
+    @Published var temp: Int = 7
+    @Published var humi: Int = 17
+    @Published var light: Int = 27
     @Published var soil: Int = 0
     
     @Published var queryItems = [Item]()
     @Published var tempItems: [Double] = []
-    @Published var tempDatas: [(String, Double)] = []
-    @Published var humiDatas: [(String, Double)] = []
+    @Published var tempDatas: [(String, Double)]
+    @Published var humiDatas: [(String, Double)]
     @Published var offsetY: CGFloat = 0
+    
+    @Published var banerColor: Color = Color(hex: Constant.banerGreen)
+    @Published var banerTitle: BanerTitle = .green
     
     @Published var specialRequestEnabled = false {
         didSet {
@@ -47,6 +50,17 @@ class TelemetryViewModel: ObservableObject {
     @Published var requestBuzzerCommandAlert: CommandRequest = .notRequest
     @Published var isShowingBuzzerCommandAlert = false
     
+    init () {
+        self.humiDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+        self.tempDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+        self.queryItems = [
+            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
+            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
+            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
+            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
+            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17)
+        ]
+    }
     // MARK: -  post Command Buzzer
     func postBuzzerCommand(body: String) {
         let number: Int = Int(body) ?? 0

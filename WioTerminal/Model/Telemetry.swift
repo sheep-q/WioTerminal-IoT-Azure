@@ -11,3 +11,9 @@ struct Telemetry: Codable {
     let timestamp: String
     let value: Int
 }
+
+enum BanerTitle: String {
+    case green = "rất tốt 🥰"
+    case yellow = "cảnh báo 🙄"
+    case red = "nguy hiểm 🤬"
+}

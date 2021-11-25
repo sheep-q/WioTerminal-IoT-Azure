@@ -49,8 +49,68 @@ struct TelemetryView: View {
                         .padding()
                         .padding(.horizontal, 10)
                         
+                        //MARK: - Change Baner
+                        HStack {
+                            Spacer()
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(hex: "2a9d8f"))
+                                .frame(width: 40, height: 20)
+                                .gesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            viewModel.banerColor = Color(hex: Constant.banerGreen)
+                                            viewModel.banerTitle = .green
+                                        }
+                                )
+                            
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(hex: "EDAE49"))
+                                .frame(width: 40, height: 20)
+                                .gesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            viewModel.banerColor = Color(hex: Constant.banerYellow)
+                                            viewModel.banerTitle = .yellow
+                                        }
+                                )
+                            
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(hex: "D1495B"))
+                                .frame(width: 40, height: 20)
+                                .gesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            viewModel.banerColor = Color(hex: Constant.banerRed)
+                                            viewModel.banerTitle = .red
+                                        }
+                                )
+                        }
+                        .padding(.horizontal, 30)
+                        
                         // MARK: -  BanerView
                         BanerView(viewModel: self.viewModel, connectionString: "đã kết nối", statusString: "bảo quản tốt")
+                        
+                        HStack {
+                            Spacer()
+                            Text("Điều kiện bảo quản tốt nhất cho sản phẩm của bạn cần là giữ liên tục trong kho lạnh ở nhiệt độ từ 4ᵒC đến 6ᵒC.")
+                            .font(.custom(Font.nunitoRegular, size: 15))
+                            .foregroundColor(Color(hex: Constant.greyColor))
+                            .padding(.horizontal, 25)
+                            .offset(y: 15)
+                            Spacer()
+                        }
+                        .padding(.top, -15)
+                        
+                        HStack {
+                            Spacer()
+                            Text("Thông tin kho lạnh")
+                                .font(.custom(Font.nunitoBoldItalic, size: 13))
+                                .foregroundColor(Color(hex: Constant.greyColor))
+                            Image(systemName: "info.circle")
+                                .resizable()
+                                .frame(width: 13, height: 13)
+                        }
+                        .padding(.horizontal, 35)
                         
                         HStack {
                             BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Nhiệt độ", legend: Constant.doC, style: Styles.barChartStyleOrangeLight, form: ChartForm.medium, dropShadow: false)
