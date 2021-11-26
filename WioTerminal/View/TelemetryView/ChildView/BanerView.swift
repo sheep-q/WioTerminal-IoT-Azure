@@ -55,12 +55,6 @@ struct BanerView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(.white)
                             .frame(width: 220, height: 45)
-                            .gesture(
-                                TapGesture()
-                                    .onEnded { _ in
-                                        isShowDetail = true
-                                    }
-                            )
                         
                         HStack {
                             Image("milk")
@@ -73,6 +67,12 @@ struct BanerView: View {
                                 .font(.custom("Nunito-Regular", size: 20))
                         }
                     }
+                    .gesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                isShowDetail = true
+                            }
+                    )
                     
                     .padding(.bottom, 15)
                     

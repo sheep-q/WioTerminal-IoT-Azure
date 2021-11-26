@@ -20,15 +20,11 @@ struct MonitorView: View {
     @State var pushTempDetailViewActive = false
     @State var pushHumiDetailViewActive = false
     
+    @State private var showSafari = false
+    @State private var urlString = "https://wioterminal.azureiotcentral.com/rules"
     var body: some View {
         NavigationView {
             ZStack {
-                //                NavigationLink(destination:
-                //                                BarChartView(data: ChartData(values: viewModel.datas), title: "Temperature", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.extraLarge),
-                //                               isActive: self.$pushActive) {
-                //                    // NA
-                //                }.hidden()
-                
                 Color(hex: Constant.backgroundColor)
                     .ignoresSafeArea(edges: .top)
                 
@@ -316,10 +312,15 @@ struct MonitorView: View {
                             
                             Form {
                                 HStack {
-                                    Link("Cài đặt điều kiện", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Text("Cài đặt điều kiện")
+                                        .font(.custom(Font.nunitoRegular, size: 17))
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "chevron.forward.2")
+                                    Image(systemName: "chevron.forward")
+                                }
+                                .onTapGesture {
+                                    urlString = "https://wioterminal.azureiotcentral.com/rules"
+                                    self.showSafari.toggle()
                                 }
                             }
                             .frame(height: 130)
@@ -350,27 +351,37 @@ struct MonitorView: View {
                             
                             Form {
                                 HStack {
-                                    Link("Đặt lịch", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
-                                        .foregroundColor(.black)
+                                    Text("Đặt lịch")
+                                        .font(.custom(Font.nunitoRegular, size: 17))
                                     Spacer()
                                     Image(systemName: "chevron.forward.2")
                                 }
+                                .onTapGesture {
+                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/definitions/create/configure"
+                                    self.showSafari.toggle()
+                                }
                                 
                                 HStack {
-                                    Link("Lịch sử điều khiển", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
-                                        .foregroundColor(.black)
+                                    Text("Lịch sử điều khiển")
+                                        .font(.custom(Font.nunitoRegular, size: 17))
                                     Spacer()
-                                    Image(systemName: "chevron.forward")
+                                    Image(systemName: "chevron.forward.2")
+                                }
+                                .onTapGesture {
+                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/instances"
+                                    self.showSafari.toggle()
                                 }
                             }
                             .frame(height: 200)
                             .offset(y: 20)
                         }
                     }
-//                    .padding(.horizontal, 38)
                 }
             }
             .navigationTitle("Monitor")
+            .fullScreenCover(isPresented: $showSafari) {
+                SafariView(url:URL(string: urlString)!)
+            }
         }
         .onAppear {
             if !viewDidLoad {

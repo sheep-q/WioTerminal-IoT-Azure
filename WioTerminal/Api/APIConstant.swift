@@ -13,8 +13,8 @@ struct APIConstant {
     static let subDomain = "wioterminal"
     static let baseDomain = "https://\(subDomain).azureiotcentral.com/api"
     static let deviceId = "wioTerminal"
-    static let deviceTemplateId = "dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh"
-    static let authorizationString = "SharedAccessSignature sr=f2a5c990-8900-4a68-b779-76c40f515b2d&sig=iCs3HyUggu8HXuvDa0MYY5P9CxVOYJzZ7SNVtaJdQZc%3D&skn=token&se=1668700833396"
+    static let deviceTemplateId = "dtmi:modelDefinition:t5cp9xuag:lhstobvlb8"
+    static let authorizationString = "SharedAccessSignature sr=c5c95af8-b0b7-44d3-b0e8-800f72170fc5&sig=3TsHAwNRAHSDeitDA%2BdtlLD8jw9aSgwBNeoAtm%2FsI3A%3D&skn=token&se=1669434747676"
     
     static func getBody(number: Int, time: String, day: Int) -> String {
         var timeString = ""
