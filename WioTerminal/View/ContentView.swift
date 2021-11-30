@@ -8,29 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    var wio = Wio()
     var body: some View {
-        ZStack {
-            TabView {
-                
-                TelemetryView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("First View")
-                    }
-                
-                MonitorView()
-                    .tabItem {
-                        Image(systemName: "cloud")
-                        Text("Zero View")
-                    }
-                
-                ThirdView()
-                    .tabItem {
-                        Image(systemName: "person.crop.circle")
-                        Text("Third View")
-                    }
-            }
+        TabView {
+            TelemetryView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("First View")
+                }
+            
+            MonitorView()
+                .tabItem {
+                    Image(systemName: "cloud")
+                    Text("Zero View")
+                }
+            
+            ThirdView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Third View")
+                }
         }
+        .environmentObject(wio)
     }
 }
 
