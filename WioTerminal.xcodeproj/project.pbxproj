@@ -20,10 +20,15 @@
 		467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D12746A6B8002FC376 /* DebugPrint.swift */; };
 		467B78D42746A70F002FC376 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D32746A70F002FC376 /* DateTime.swift */; };
 		467B78D62746BBCB002FC376 /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D52746BBCB002FC376 /* QueryModel.swift */; };
+		467BC14B27564F1700D90AE5 /* EditDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467BC14A27564F1700D90AE5 /* EditDeviceView.swift */; };
+		467BC14E2756734D00D90AE5 /* ListDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467BC14D2756734D00D90AE5 /* ListDeviceModel.swift */; };
 		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
 		468B47DE2745623000571960 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B47DD2745623000571960 /* Constant.swift */; };
 		46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */; };
 		46B3FCA22750993F0037760F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B3FCA12750993F0037760F /* SafariView.swift */; };
+		46F8D5FA275613A20030FCA3 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8D5F9275613A20030FCA3 /* DeviceView.swift */; };
+		46F8D5FC275618E40030FCA3 /* Wio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8D5FB275618E40030FCA3 /* Wio.swift */; };
+		46F8D60027561E800030FCA3 /* AddNewDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8D5FF27561E800030FCA3 /* AddNewDeviceView.swift */; };
 		E318895A274EAB8A00848C0B /* DetailBanerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3188959274EAB8900848C0B /* DetailBanerView.swift */; };
 		E34818082743C36F005D63E3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818072743C36F005D63E3 /* APIConstant.swift */; };
 		E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34818092743DBD0005D63E3 /* ApiManager.swift */; };
@@ -57,10 +62,15 @@
 		467B78D12746A6B8002FC376 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
 		467B78D32746A70F002FC376 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		467B78D52746BBCB002FC376 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
+		467BC14A27564F1700D90AE5 /* EditDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeviceView.swift; sourceTree = "<group>"; };
+		467BC14D2756734D00D90AE5 /* ListDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDeviceModel.swift; sourceTree = "<group>"; };
 		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
 		468B47DD2745623000571960 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommandModel.swift; sourceTree = "<group>"; };
 		46B3FCA12750993F0037760F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		46F8D5F9275613A20030FCA3 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
+		46F8D5FB275618E40030FCA3 /* Wio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wio.swift; sourceTree = "<group>"; };
+		46F8D5FF27561E800030FCA3 /* AddNewDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDeviceView.swift; sourceTree = "<group>"; };
 		E3188959274EAB8900848C0B /* DetailBanerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBanerView.swift; sourceTree = "<group>"; };
 		E34818072743C36F005D63E3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E34818092743DBD0005D63E3 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -131,6 +141,14 @@
 			path = MonitorView;
 			sourceTree = "<group>";
 		};
+		467BC14C2756731500D90AE5 /* Enviroment */ = {
+			isa = PBXGroup;
+			children = (
+				46F8D5FB275618E40030FCA3 /* Wio.swift */,
+			);
+			path = Enviroment;
+			sourceTree = "<group>";
+		};
 		468B47DC2745621C00571960 /* Help */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +157,16 @@
 				467B78D32746A70F002FC376 /* DateTime.swift */,
 			);
 			path = Help;
+			sourceTree = "<group>";
+		};
+		46F8D5FD27561E5E0030FCA3 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				46F8D5F9275613A20030FCA3 /* DeviceView.swift */,
+				46F8D5FF27561E800030FCA3 /* AddNewDeviceView.swift */,
+				467BC14A27564F1700D90AE5 /* EditDeviceView.swift */,
+			);
+			path = Device;
 			sourceTree = "<group>";
 		};
 		E34818062743C35E005D63E3 /* Api */ = {
@@ -173,6 +201,7 @@
 				E3F286602743356D005599BF /* WioTerminalApp.swift */,
 				468B47DC2745621C00571960 /* Help */,
 				E34818062743C35E005D63E3 /* Api */,
+				467BC14C2756731500D90AE5 /* Enviroment */,
 				E3F2867D27436EAF005599BF /* Model */,
 				E3F2867727435157005599BF /* Extension */,
 				E3F2866E2743358B005599BF /* View */,
@@ -235,6 +264,7 @@
 			children = (
 				E3F2866F274335B0005599BF /* TelemetryView.swift */,
 				468983B52744FC48004B39E6 /* TelemetryViewModel.swift */,
+				46F8D5FD27561E5E0030FCA3 /* Device */,
 				4633D20327464F520062D593 /* ChildView */,
 			);
 			path = TelemetryView;
@@ -247,6 +277,7 @@
 				463CB8F3274408B80009A2A1 /* Telemetry.swift */,
 				467B78D52746BBCB002FC376 /* QueryModel.swift */,
 				46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */,
+				467BC14D2756734D00D90AE5 /* ListDeviceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,13 +363,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F8D5FA275613A20030FCA3 /* DeviceView.swift in Sources */,
 				468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */,
 				E3F286632743356D005599BF /* ContentView.swift in Sources */,
 				467B78D42746A70F002FC376 /* DateTime.swift in Sources */,
 				4633D2052746507C0062D593 /* BanerView.swift in Sources */,
+				467BC14E2756734D00D90AE5 /* ListDeviceModel.swift in Sources */,
 				468B47DE2745623000571960 /* Constant.swift in Sources */,
 				E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */,
 				E318895A274EAB8A00848C0B /* DetailBanerView.swift in Sources */,
+				46F8D60027561E800030FCA3 /* AddNewDeviceView.swift in Sources */,
 				464B3E392746747900264478 /* HistoryView.swift in Sources */,
 				E3F2867427433626005599BF /* ThirdView.swift in Sources */,
 				467B78D027469161002FC376 /* MonitorView.swift in Sources */,
@@ -349,7 +383,9 @@
 				46167CA8274BFD3A00FA2169 /* AlertVC+.swift in Sources */,
 				E3F28670274335B0005599BF /* TelemetryView.swift in Sources */,
 				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
+				46F8D5FC275618E40030FCA3 /* Wio.swift in Sources */,
 				46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */,
+				467BC14B27564F1700D90AE5 /* EditDeviceView.swift in Sources */,
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				46B3FCA22750993F0037760F /* SafariView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,

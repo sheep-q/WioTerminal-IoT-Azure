@@ -9,9 +9,15 @@ import SwiftUI
 import SwiftUICharts
 
 struct TelemetryView: View {
+    @EnvironmentObject var wio: Wio
     
     @StateObject var viewModel = TelemetryViewModel()
-    @State var viewDidLoad = false
+    @State private var viewDidLoad = false
+    @State private var isShowDeviceView = false
+    
+    var device: Device? {
+        return wio.devices.first(where: {$0.isTracking})
+    }
     
     init(){
         UITableView.appearance().backgroundColor = .clear
@@ -30,7 +36,7 @@ struct TelemetryView: View {
                                 Text("Hi, Hust")
                                     .font(.custom(Font.nunutiBold, size: 40))
                                     .foregroundColor(Color(hex: Constant.greyColor))
-                                Text("Wellcome back, I'm Wio Terminal")
+                                Text("Chào mừng bạn quay trở lại")
                                     .font(.custom(Font.nunutiBold, size: 15))
                                     .foregroundColor(Color(hex: Constant.greyColor))
                             }
@@ -60,6 +66,7 @@ struct TelemetryView: View {
                                         .onEnded { _ in
                                             viewModel.banerColor = Color(hex: Constant.banerGreen)
                                             viewModel.banerTitle = .green
+                                            APIConstant.deviceId = ""
                                         }
                                 )
                             
@@ -194,6 +201,22 @@ struct TelemetryView: View {
                 }
             }
             .navigationTitle("Wio Terminal")
+            .navigationBarItems(trailing: Button(action: {
+                self.isShowDeviceView = true
+            }) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 7)
+                        .frame(width: 100, height: 28)
+                        .foregroundColor(Color(hex: "D1495B"))
+                    
+                    Text(device?.name ?? ".....")
+                        .foregroundColor(.white)
+                        .font(.custom(Font.nunitoRegular, size: 18))
+                }
+            })
+            .fullScreenCover(isPresented: $isShowDeviceView) {
+                DeviceView()
+            }
         }
         .onAppear {
             if !viewDidLoad {
@@ -202,6 +225,21 @@ struct TelemetryView: View {
                 viewModel.getTelemetry()
                 viewModel.postQuery()
                 //viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P4D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
+            }
+            
+            viewModel.getListDevices { listDevice in
+                if let devices = listDevice?.value {
+                    for device in devices {
+                        if let _ = self.wio.devices.firstIndex(where: {$0.name == device.displayName}) {
+                            
+                        } else {
+                            let data = Device()
+                            data.name = device.displayName
+                            data.templateID = device.template
+                            self.wio.add(data)
+                        }
+                    }
+                }
             }
         }
     }

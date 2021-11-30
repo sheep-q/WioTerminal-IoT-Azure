@@ -15,6 +15,11 @@ enum APIError: Error {
 class ApiManager: ObservableObject {
     static var shared = ApiManager()
     
+    // MARK: - get list devices
+    func getListDevice(completion: @escaping((Result<ListDeviceModel?, APIError>) -> Void )) {
+        request(path: Path.listDevices, method: .GET, completion: completion)
+    }
+    
     // MARK: -  post command
     func postBuzzerCommand(body: String, completion: @escaping((Result<PostCommandModel?, APIError>) -> Void )) {
         request(path: Path.postBuzzerCommand, method: .POST, body: body, isCommand: true, completion: completion)

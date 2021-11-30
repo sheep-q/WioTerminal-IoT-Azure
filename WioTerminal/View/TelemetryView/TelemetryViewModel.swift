@@ -15,6 +15,8 @@ enum CommandRequest {
 }
 
 class TelemetryViewModel: ObservableObject {
+    @EnvironmentObject var wio: Wio
+    
     @Published var temp: Int = 7
     @Published var humi: Int = 17
     @Published var light: Int = 27
@@ -61,6 +63,19 @@ class TelemetryViewModel: ObservableObject {
             Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17)
         ]
     }
+    
+    // MARK: - get list devices
+    func getListDevices(completion: @escaping ((ListDeviceModel?) -> Void)) {
+        ApiManager.shared.getListDevice { 
+            switch $0 {
+            case let .success(listDevice):
+                completion(listDevice)
+            case let .failure(err):
+                printError(err.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: -  post Command Buzzer
     func postBuzzerCommand(body: String) {
         let number: Int = Int(body) ?? 0
