@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct APIConstant {
+class APIConstant {
     
-    //MARK: - Base domain
-    static let subDomain = "wioterminal"
-    static let baseDomain = "https://\(subDomain).azureiotcentral.com/api"
-    static var deviceId = "wioTerminal"
-    static let deviceTemplateId = "dtmi:modelDefinition:t5cp9xuag:lhstobvlb8"
-    static let authorizationString = "SharedAccessSignature sr=c5c95af8-b0b7-44d3-b0e8-800f72170fc5&sig=3TsHAwNRAHSDeitDA%2BdtlLD8jw9aSgwBNeoAtm%2FsI3A%3D&skn=token&se=1669434747676"
+    //MARK: - domain
+    static var subDomain = "wioterminal"
+    static var baseDomain = "https://\(subDomain).azureiotcentral.com/api"
+    static var authorizationString = "SharedAccessSignature sr=05c490cd-8baf-4b72-94cd-72b20ae5205c&sig=RxXDS0OsUcNhMFHjGgeIkCT7WtYV09YGzA2kFWvMLt4%3D&skn=token&se=1670054841225"
+    
+    // MARK: - device
+//    static var deviceId = "Device01"
+//    static var deviceTemplateId = "dtmi:modelDefinition:st86hdxjc:ecap5fsxee"
     
     static func getBody(number: Int, time: String, day: Int) -> String {
         var timeString = ""
@@ -27,15 +29,15 @@ struct APIConstant {
             timeString = "H"
         }
         
-        return "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM \(deviceTemplateId) WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
+        return "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
     }
 }
 
 struct Path {
     static let getDeviceTemplate = "/deviceTemplates"
-    static let getTelemetry = "/devices/\(APIConstant.deviceId)/telemetry"
+    static let getTelemetry = "/devices/%@/telemetry"
     static let postQuery = "/query"
-    static let postBuzzerCommand = "/devices/\(APIConstant.deviceId)/commands/ringBuzzer"
+    static let postBuzzerCommand = "/devices/%@/commands/ringBuzzer"
     static let listDevices = "/devices"
 }
 
@@ -44,4 +46,8 @@ enum Method: String {
     case POST
     case PUT
     case DELETE
+}
+
+extension Notification.Name {
+    static let changeDevice = Notification.Name("changeDevice")
 }

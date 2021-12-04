@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct BanerView: View {
+    @EnvironmentObject var wio: Wio
+    var device: Device? {
+        return wio.devices.first(where: {$0.isTracking})
+    }
     
     @State private var phase: CGFloat = 0
     @State var connectionString: String
@@ -27,10 +31,6 @@ struct BanerView: View {
     var body: some View {
         //NavigationView{
             ZStack {
-//                NavigationLink(destination: DetailBanerView(), isActive: self.$isShowDetail) {
-//                    //
-//                }
-                
                 RoundedRectangle(cornerRadius: 20)
                     .fill(viewModel.banerColor)
                     .frame(height: 300)
@@ -57,12 +57,12 @@ struct BanerView: View {
                             .frame(width: 220, height: 45)
                         
                         HStack {
-                            Image("milk")
+                            Image(device?.product.image ?? "vaccine")
                                 .resizable()
                                 .scaleEffect()
                                 .frame(width: 30, height: 30)
                             
-                            Text(viewModel.banerTitle.rawValue)
+                            Text(" \(viewModel.banerTitle.rawValue)" )
                                 .foregroundColor(Color(hex: Constant.greyColor))
                                 .font(.custom("Nunito-Regular", size: 20))
                         }

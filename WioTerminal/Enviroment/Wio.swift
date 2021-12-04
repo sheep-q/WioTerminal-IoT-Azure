@@ -32,6 +32,7 @@ struct Product: Codable, Hashable {
 class Wio: ObservableObject {
     @Published private(set) var devices: [Device]
     static let saveKey = "SavedData"
+    static let saveDevice = "SavedDevice"
     
     init() {
         
@@ -75,7 +76,12 @@ class Wio: ObservableObject {
     func toggle(_ device: Device) {
         _ = devices.map({$0.isTracking = false})
         device.isTracking.toggle()
+        
+        if let encoded = try? JSONEncoder().encode(device) {
+            UserDefaults.standard.set(encoded, forKey: Self.saveDevice)
+        }
         save()
+        
         objectWillChange.send()
     }
 }

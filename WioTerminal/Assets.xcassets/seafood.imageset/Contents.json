@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "002-lightbulb.png",
+      "filename" : "002-seafood.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "002-lightbulb-1.png",
+      "filename" : "002-seafood-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "002-lightbulb-2.png",
+      "filename" : "002-seafood-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

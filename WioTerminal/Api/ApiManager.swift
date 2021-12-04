@@ -22,17 +22,46 @@ class ApiManager: ObservableObject {
     
     // MARK: -  post command
     func postBuzzerCommand(body: String, completion: @escaping((Result<PostCommandModel?, APIError>) -> Void )) {
-        request(path: Path.postBuzzerCommand, method: .POST, body: body, isCommand: true, completion: completion)
+        var deviceID = ""
+        if let data = UserDefaults.standard.data(forKey: Wio.saveDevice) {
+            if let decoded = try? JSONDecoder().decode(Device.self, from: data) {
+                deviceID = decoded.name
+            } else {
+                return
+            }
+        }
+        let path = String(format: Path.postBuzzerCommand, deviceID)
+        request(path: path, method: .POST, body: body, isCommand: true, completion: completion)
     }
     
     // MARK: -  get Telemetry
     func getTelemetry(telemetry: String, completion: @escaping((Result<Telemetry?, APIError>) -> Void)) {
-        request(path: Path.getTelemetry + "/\(telemetry)", method: .GET, completion: completion)
+        var deviceID = ""
+        if let data = UserDefaults.standard.data(forKey: Wio.saveDevice) {
+            if let decoded = try? JSONDecoder().decode(Device.self, from: data) {
+                deviceID = decoded.name
+            } else {
+                return
+            }
+        }
+        let path = String(format: Path.getTelemetry, deviceID)
+        request(path: path + "/\(telemetry)", method: .GET, completion: completion)
     }
     
     // MARK: -  post Query
     func postQuery(body: String, completion: @escaping((Result<QueryModel?, APIError>) -> Void)) {
-        request(path: Path.postQuery, method: .POST, body: body, completion: completion)
+        
+        var deviceTemplate = ""
+        if let data = UserDefaults.standard.data(forKey: Wio.saveDevice) {
+            if let decoded = try? JSONDecoder().decode(Device.self, from: data) {
+                deviceTemplate = decoded.templateID
+            } else {
+                return
+            }
+        }
+        let bodyString = String(format: body, deviceTemplate)
+        
+        request(path: Path.postQuery, method: .POST, body: bodyString, completion: completion)
     }
     
     // MARK: -  request

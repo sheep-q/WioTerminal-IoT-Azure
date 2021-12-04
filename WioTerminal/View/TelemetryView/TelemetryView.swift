@@ -10,17 +10,16 @@ import SwiftUICharts
 
 struct TelemetryView: View {
     @EnvironmentObject var wio: Wio
-    
-    @StateObject var viewModel = TelemetryViewModel()
-    @State private var viewDidLoad = false
-    @State private var isShowDeviceView = false
-    
     var device: Device? {
         return wio.devices.first(where: {$0.isTracking})
     }
     
+    @StateObject var viewModel = TelemetryViewModel()
+    @State private var isShowDeviceView = false
+    
     init(){
         UITableView.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(red: 108/255, green: 117/255, blue: 125/255, alpha: 1)]
     }
     
     var body: some View {
@@ -66,7 +65,6 @@ struct TelemetryView: View {
                                         .onEnded { _ in
                                             viewModel.banerColor = Color(hex: Constant.banerGreen)
                                             viewModel.banerTitle = .green
-                                            APIConstant.deviceId = ""
                                         }
                                 )
                             
@@ -100,10 +98,10 @@ struct TelemetryView: View {
                         HStack {
                             Spacer()
                             Text("Điều kiện bảo quản tốt nhất cho sản phẩm của bạn cần là giữ liên tục trong kho lạnh ở nhiệt độ từ 4ᵒC đến 6ᵒC.")
-                            .font(.custom(Font.nunitoRegular, size: 15))
-                            .foregroundColor(Color(hex: Constant.greyColor))
-                            .padding(.horizontal, 25)
-                            .offset(y: 15)
+                                .font(.custom(Font.nunitoRegular, size: 15))
+                                .foregroundColor(Color(hex: Constant.greyColor))
+                                .padding(.horizontal, 25)
+                                .offset(y: 15)
                             Spacer()
                         }
                         .padding(.top, -15)
@@ -200,48 +198,48 @@ struct TelemetryView: View {
                     }
                 }
             }
-            .navigationTitle("Wio Terminal")
             .navigationBarItems(trailing: Button(action: {
                 self.isShowDeviceView = true
             }) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7)
-                        .frame(width: 100, height: 28)
-                        .foregroundColor(Color(hex: "D1495B"))
-                    
-                    Text(device?.name ?? ".....")
-                        .foregroundColor(.white)
-                        .font(.custom(Font.nunitoRegular, size: 18))
-                }
+                Text(device?.name ?? ".....")
+                    .foregroundColor(Color(hex: "D1495B"))
+                    .font(.custom(Font.nunutiBold, size: 18))
             })
-            .fullScreenCover(isPresented: $isShowDeviceView) {
-                DeviceView()
-            }
-        }
-        .onAppear {
-            if !viewDidLoad {
-                print("Load")
-                viewDidLoad = true
+            .fullScreenCover(isPresented: $isShowDeviceView, onDismiss: {
                 viewModel.getTelemetry()
                 viewModel.postQuery()
-                //viewModel.postQuery(body: "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM dtmi:modelDefinition:jyf9vhwxe:jar8rfo1yh WHERE WITHIN_WINDOW(P4D) AND temp > 0 GROUP BY WINDOW(PT10M) ORDER BY $ts ASC")
-            }
+                getListDevices()
+            }, content: {
+                DeviceView()
+            })
+            .navigationTitle("Wio Terminal")
+        }
+        .onAppear {
+            viewModel.getTelemetry()
+            viewModel.postQuery()
             
-            viewModel.getListDevices { listDevice in
-                if let devices = listDevice?.value {
-                    for device in devices {
-                        if let _ = self.wio.devices.firstIndex(where: {$0.name == device.displayName}) {
-                            
-                        } else {
-                            let data = Device()
-                            data.name = device.displayName
-                            data.templateID = device.template
+            getListDevices()
+        }
+    }
+    
+    private func getListDevices() {
+        viewModel.getListDevices { listDevice in
+            if let devices = listDevice?.value {
+                for device in devices {
+                    if let _ = self.wio.devices.firstIndex(where: {$0.name == device.displayName}) {
+                        
+                    } else {
+                        let data = Device()
+                        data.name = device.displayName
+                        data.templateID = device.template
+                        DispatchQueue.main.async {
                             self.wio.add(data)
                         }
                     }
                 }
             }
         }
+        
     }
 }
 

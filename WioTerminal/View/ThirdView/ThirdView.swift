@@ -88,7 +88,7 @@ struct ThirdView: View {
                     }
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Hồ sơ")
         }
     }
 }

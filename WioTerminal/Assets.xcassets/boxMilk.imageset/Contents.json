@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "002-lightbulb.png",
+      "filename" : "004-milk.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "002-lightbulb-1.png",
+      "filename" : "004-milk-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "002-lightbulb-2.png",
+      "filename" : "004-milk-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
