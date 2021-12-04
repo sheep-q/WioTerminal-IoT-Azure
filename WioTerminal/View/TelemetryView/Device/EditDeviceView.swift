@@ -23,11 +23,11 @@ struct EditDeviceView: View {
     var device: Device
     
     let products: [Product] = [
-        Product(name: "Phô mai", image: "milk"),
-        Product(name: "Hải sản đông lạnh", image: "milk"),
-        Product(name: "Vắc-xin", image: "milk"),
+        Product(name: "Phô mai", image: "cheese"),
+        Product(name: "Hải sản đông lạnh", image: "seafood"),
+        Product(name: "Vắc-xin", image: "vaccine"),
         Product(name: "Sữa tươi", image: "milk"),
-        Product(name: "Sữa tuyệt trùng", image: "milk")
+        Product(name: "Sữa tuyệt trùng", image: "boxMilk")
     ]
     
     init(device: Device) {

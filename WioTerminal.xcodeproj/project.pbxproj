@@ -16,6 +16,8 @@
 		463CB8F4274408B80009A2A1 /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CB8F3274408B80009A2A1 /* Telemetry.swift */; };
 		464B3E372746614E00264478 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464B3E362746614E00264478 /* Nunito-Bold.ttf */; };
 		464B3E392746747900264478 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464B3E382746747900264478 /* HistoryView.swift */; };
+		464DCFFA2759CF0500A21A67 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DCFF92759CF0500A21A67 /* TabBarView.swift */; };
+		464DCFFD2759D75300A21A67 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DCFFC2759D75300A21A67 /* SettingView.swift */; };
 		467B78D027469161002FC376 /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78CF27469161002FC376 /* MonitorView.swift */; };
 		467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D12746A6B8002FC376 /* DebugPrint.swift */; };
 		467B78D42746A70F002FC376 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B78D32746A70F002FC376 /* DateTime.swift */; };
@@ -24,6 +26,7 @@
 		467BC14E2756734D00D90AE5 /* ListDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467BC14D2756734D00D90AE5 /* ListDeviceModel.swift */; };
 		468983B62744FC48004B39E6 /* TelemetryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468983B52744FC48004B39E6 /* TelemetryViewModel.swift */; };
 		468B47DE2745623000571960 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B47DD2745623000571960 /* Constant.swift */; };
+		468F177A275768AD00B87BE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F1779275768AD00B87BE8 /* LoginView.swift */; };
 		46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */; };
 		46B3FCA22750993F0037760F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B3FCA12750993F0037760F /* SafariView.swift */; };
 		46F8D5FA275613A20030FCA3 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8D5F9275613A20030FCA3 /* DeviceView.swift */; };
@@ -58,6 +61,8 @@
 		463CB8F3274408B80009A2A1 /* Telemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
 		464B3E362746614E00264478 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		464B3E382746747900264478 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		464DCFF92759CF0500A21A67 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		464DCFFC2759D75300A21A67 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		467B78CF27469161002FC376 /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
 		467B78D12746A6B8002FC376 /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
 		467B78D32746A70F002FC376 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		467BC14D2756734D00D90AE5 /* ListDeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDeviceModel.swift; sourceTree = "<group>"; };
 		468983B52744FC48004B39E6 /* TelemetryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryViewModel.swift; sourceTree = "<group>"; };
 		468B47DD2745623000571960 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		468F1779275768AD00B87BE8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommandModel.swift; sourceTree = "<group>"; };
 		46B3FCA12750993F0037760F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		46F8D5F9275613A20030FCA3 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
@@ -133,6 +139,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		464DCFFB2759D73700A21A67 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				464DCFFC2759D75300A21A67 /* SettingView.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
 		467B78CE2746905B002FC376 /* MonitorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,14 @@
 				467B78D32746A70F002FC376 /* DateTime.swift */,
 			);
 			path = Help;
+			sourceTree = "<group>";
+		};
+		468F17782757689300B87BE8 /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				468F1779275768AD00B87BE8 /* LoginView.swift */,
+			);
+			path = "Login View";
 			sourceTree = "<group>";
 		};
 		46F8D5FD27561E5E0030FCA3 /* Device */ = {
@@ -224,8 +246,11 @@
 			isa = PBXGroup;
 			children = (
 				E3F286622743356D005599BF /* ContentView.swift */,
+				464DCFF92759CF0500A21A67 /* TabBarView.swift */,
+				468F17782757689300B87BE8 /* Login View */,
 				E3F2867C27436EA2005599BF /* TelemetryView */,
 				467B78CE2746905B002FC376 /* MonitorView */,
+				464DCFFB2759D73700A21A67 /* SettingView */,
 				E3F2867A27436E86005599BF /* ThirdView */,
 				E3F2867B27436E95005599BF /* SecondView */,
 			);
@@ -381,16 +406,19 @@
 				E3F2867927435170005599BF /* Color+extension.swift in Sources */,
 				E3D5A1F5274BC19700495E77 /* DetailTelemery.swift in Sources */,
 				46167CA8274BFD3A00FA2169 /* AlertVC+.swift in Sources */,
+				464DCFFA2759CF0500A21A67 /* TabBarView.swift in Sources */,
 				E3F28670274335B0005599BF /* TelemetryView.swift in Sources */,
 				E348180A2743DBD0005D63E3 /* ApiManager.swift in Sources */,
 				46F8D5FC275618E40030FCA3 /* Wio.swift in Sources */,
 				46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */,
+				468F177A275768AD00B87BE8 /* LoginView.swift in Sources */,
 				467BC14B27564F1700D90AE5 /* EditDeviceView.swift in Sources */,
 				E3F28672274335EF005599BF /* SecondView.swift in Sources */,
 				46B3FCA22750993F0037760F /* SafariView.swift in Sources */,
 				E3F2867627434F7D005599BF /* ProfileView.swift in Sources */,
 				467B78D22746A6B8002FC376 /* DebugPrint.swift in Sources */,
 				467B78D62746BBCB002FC376 /* QueryModel.swift in Sources */,
+				464DCFFD2759D75300A21A67 /* SettingView.swift in Sources */,
 				E34818082743C36F005D63E3 /* APIConstant.swift in Sources */,
 				E3F286612743356D005599BF /* WioTerminalApp.swift in Sources */,
 			);

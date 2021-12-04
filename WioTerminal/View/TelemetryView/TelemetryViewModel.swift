@@ -26,6 +26,7 @@ class TelemetryViewModel: ObservableObject {
     @Published var tempItems: [Double] = []
     @Published var tempDatas: [(String, Double)]
     @Published var humiDatas: [(String, Double)]
+    @Published var lightDatas: [(String, Double)]
     @Published var offsetY: CGFloat = 0
     
     @Published var banerColor: Color = Color(hex: Constant.banerGreen)
@@ -44,7 +45,7 @@ class TelemetryViewModel: ObservableObject {
     @Published var number = 8
     @Published var time = 1
     @Published var day = 0
-   
+    
     static let numbers = [1, 2, 5, 10, 15, 20, 30, 45, 60]
     static let times = ["giây(s)", "phút(m)", "giờ"]
     static let days = [1,2,3,4,5,6,7]
@@ -55,6 +56,8 @@ class TelemetryViewModel: ObservableObject {
     init () {
         self.humiDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
         self.tempDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+        self.lightDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+        
         self.queryItems = [
             Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
             Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
@@ -66,10 +69,12 @@ class TelemetryViewModel: ObservableObject {
     
     // MARK: - get list devices
     func getListDevices(completion: @escaping ((ListDeviceModel?) -> Void)) {
-        ApiManager.shared.getListDevice { 
+        ApiManager.shared.getListDevice {
             switch $0 {
             case let .success(listDevice):
-                completion(listDevice)
+                DispatchQueue.main.async {
+                    completion(listDevice)
+                }
             case let .failure(err):
                 printError(err.localizedDescription)
             }
@@ -102,6 +107,9 @@ class TelemetryViewModel: ObservableObject {
                     self.temp = telemetry?.value ?? 0
                 }
             case let .failure(err):
+                DispatchQueue.main.async {
+                    self.temp = 7
+                }
                 print("failed")
                 print(err.localizedDescription)
             }
@@ -114,6 +122,9 @@ class TelemetryViewModel: ObservableObject {
                     self.humi = telemetry?.value ?? 0
                 }
             case let .failure(err):
+                DispatchQueue.main.async {
+                    self.humi = 17
+                }
                 print("failed")
                 print(err.localizedDescription)
             }
@@ -126,6 +137,9 @@ class TelemetryViewModel: ObservableObject {
                     self.light = telemetry?.value ?? 0
                 }
             case let .failure(err):
+                DispatchQueue.main.async {
+                    self.light = 27
+                }
                 print("failed")
                 print(err.localizedDescription)
             }
@@ -142,15 +156,21 @@ class TelemetryViewModel: ObservableObject {
                     self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
                     self.tempDatas = []
                     self.humiDatas = []
+                    self.lightDatas = []
                     for item in self.queryItems {
                         let time: String = convertToDate(string: item.time)
                         self.tempDatas.append((time, item.temp ?? 0))
                         self.humiDatas.append((time, item.humi ?? 0))
-                    }  
+                        self.lightDatas.append((time, item.humi ?? 0))
+                    }
                 }
             case let .failure(err):
-                print("failed")
-                printDebug("body: \(body)")
+                printDebug("faild, body: \(body)")
+                DispatchQueue.main.async {
+                    self.humiDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+                    self.tempDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+                    self.lightDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+                }
                 print(err.localizedDescription)
             }
         }

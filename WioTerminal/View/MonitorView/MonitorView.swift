@@ -9,16 +9,23 @@ import SwiftUI
 import SwiftUICharts
 
 struct MonitorView: View {
+    
+    @EnvironmentObject var wio: Wio
     @ObservedObject var viewModel = TelemetryViewModel()
+    
     private let width: CGFloat = 165
     private let height: CGFloat = 165
     @State private var speakerToggle = false
     @State private var lockToggle = false
     @State private var pumpToggle = false
-    @State private var viewDidLoad = false
     
     @State var pushTempDetailViewActive = false
     @State var pushHumiDetailViewActive = false
+    
+    @State private var isShowDeviceView = false
+    var device: Device? {
+        return wio.devices.first(where: {$0.isTracking})
+    }
     
     @State private var showSafari = false
     @State private var urlString = "https://wioterminal.azureiotcentral.com/rules"
@@ -39,6 +46,7 @@ struct MonitorView: View {
                         }
                         .padding(.horizontal, 20)
                         .offset(y: 10)
+                        .hidden()
                         
                         VStack {
                             HStack {
@@ -291,105 +299,111 @@ struct MonitorView: View {
                         Divider()
                             .padding(.horizontal)
                         
-                        HStack {
-                            Text("Đặt điều kiện")
-                                .font(.custom(Font.nunutiBold, size: 25))
-                                .foregroundColor(Color(hex: Constant.greyColor))
-                            Spacer()
-                        }
-                        .padding(.horizontal, 20)
-                        .offset(y: 10)
-                        
-                        ZStack {
-                            
-                            VStack {
-                                Text("Đặt ra các điều kiện để khi chúng xảy ra, bạn sẽ nhận được thông báo qua Outlook")
-                                    .font(.custom(Font.nunitoRegular, size: 15))
-                                    .foregroundColor(Color(hex: Constant.greyColor))
-                                Spacer()
-                            }
-                            .padding(.horizontal, 25)
-                            
-                            Form {
-                                HStack {
-                                    Text("Cài đặt điều kiện")
-                                        .font(.custom(Font.nunitoRegular, size: 17))
-                                        .foregroundColor(.black)
-                                    Spacer()
-                                    Image(systemName: "chevron.forward")
-                                }
-                                .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/rules"
-                                    self.showSafari.toggle()
-                                }
-                            }
-                            .frame(height: 130)
-                            .offset(y: 20)
-                        }
-                        
-                        Divider()
-                            .padding(.horizontal)
-                        
-                        HStack {
-                            Text("Đặt lịch")
-                                .font(.custom(Font.nunutiBold, size: 25))
-                                .foregroundColor(Color(hex: Constant.greyColor))
-                            Spacer()
-                        }
-                        .padding(.horizontal, 20)
-                        .offset(y: 10)
-                        
-                        ZStack {
-                            
-                            VStack {
-                                Text("Đặt các điều khiển theo lịch trình cụ thể.\nXem lịch sử các điều khiển đặt lịch đã được thực thi.")
-                                    .font(.custom(Font.nunitoRegular, size: 15))
-                                    .foregroundColor(Color(hex: Constant.greyColor))
-                                Spacer()
-                            }
-                            .padding(.horizontal, 25)
-                            
-                            Form {
-                                HStack {
-                                    Text("Đặt lịch")
-                                        .font(.custom(Font.nunitoRegular, size: 17))
-                                    Spacer()
-                                    Image(systemName: "chevron.forward.2")
-                                }
-                                .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/definitions/create/configure"
-                                    self.showSafari.toggle()
-                                }
-                                
-                                HStack {
-                                    Text("Lịch sử điều khiển")
-                                        .font(.custom(Font.nunitoRegular, size: 17))
-                                    Spacer()
-                                    Image(systemName: "chevron.forward.2")
-                                }
-                                .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/instances"
-                                    self.showSafari.toggle()
-                                }
-                            }
-                            .frame(height: 200)
-                            .offset(y: 20)
-                        }
+                        //                        HStack {
+                        //                            Text("Đặt điều kiện")
+                        //                                .font(.custom(Font.nunutiBold, size: 25))
+                        //                                .foregroundColor(Color(hex: Constant.greyColor))
+                        //                            Spacer()
+                        //                        }
+                        //                        .padding(.horizontal, 20)
+                        //                        .offset(y: 10)
+                        //
+                        //                        ZStack {
+                        //
+                        //                            VStack {
+                        //                                Text("Đặt ra các điều kiện để khi chúng xảy ra, bạn sẽ nhận được thông báo qua Outlook")
+                        //                                    .font(.custom(Font.nunitoRegular, size: 15))
+                        //                                    .foregroundColor(Color(hex: Constant.greyColor))
+                        //                                Spacer()
+                        //                            }
+                        //                            .padding(.horizontal, 25)
+                        //
+                        //                            Form {
+                        //                                HStack {
+                        //                                    Text("Cài đặt điều kiện")
+                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
+                        //                                        .foregroundColor(.black)
+                        //                                    Spacer()
+                        //                                    Image(systemName: "chevron.forward")
+                        //                                }
+                        //                                .onTapGesture {
+                        //                                    urlString = "https://wioterminal.azureiotcentral.com/rules"
+                        //                                    self.showSafari.toggle()
+                        //                                }
+                        //                            }
+                        //                            .frame(height: 130)
+                        //                            .offset(y: 20)
+                        //                        }
+                        //
+                        //                        Divider()
+                        //                            .padding(.horizontal)
+                        //
+                        //                        HStack {
+                        //                            Text("Đặt lịch")
+                        //                                .font(.custom(Font.nunutiBold, size: 25))
+                        //                                .foregroundColor(Color(hex: Constant.greyColor))
+                        //                            Spacer()
+                        //                        }
+                        //                        .padding(.horizontal, 20)
+                        //                        .offset(y: 10)
+                        //
+                        //                        ZStack {
+                        //
+                        //                            VStack {
+                        //                                Text("Đặt các điều khiển theo lịch trình cụ thể.\nXem lịch sử các điều khiển đặt lịch đã được thực thi.")
+                        //                                    .font(.custom(Font.nunitoRegular, size: 15))
+                        //                                    .foregroundColor(Color(hex: Constant.greyColor))
+                        //                                Spacer()
+                        //                            }
+                        //                            .padding(.horizontal, 25)
+                        //
+                        //                            Form {
+                        //                                HStack {
+                        //                                    Text("Đặt lịch")
+                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
+                        //                                    Spacer()
+                        //                                    Image(systemName: "chevron.forward.2")
+                        //                                }
+                        //                                .onTapGesture {
+                        //                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/definitions/create/configure"
+                        //                                    self.showSafari.toggle()
+                        //                                }
+                        //
+                        //                                HStack {
+                        //                                    Text("Lịch sử điều khiển")
+                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
+                        //                                    Spacer()
+                        //                                    Image(systemName: "chevron.forward.2")
+                        //                                }
+                        //                                .onTapGesture {
+                        //                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/instances"
+                        //                                    self.showSafari.toggle()
+                        //                                }
+                        //                            }
+                        //                            .frame(height: 200)
+                        //                            .offset(y: 20)
+                        //                        }
                     }
                 }
             }
-            .navigationTitle("Monitor")
-            .fullScreenCover(isPresented: $showSafari) {
-                SafariView(url:URL(string: urlString)!)
-            }
-        }
-        .onAppear {
-            if !viewDidLoad {
-                print("Load")
-                viewDidLoad = true
+            .navigationBarItems(trailing: Button(action: {
+                self.isShowDeviceView = true
+            }) {
+                Text(device?.name ?? ".....")
+                    .foregroundColor(Color(hex: "D1495B"))
+                    .font(.custom(Font.nunutiBold, size: 18))
+            })
+            .fullScreenCover(isPresented: $isShowDeviceView, onDismiss: {
                 viewModel.getTelemetry()
                 viewModel.postQuery()
-            }
+            }, content: {
+                DeviceView()
+            })
+            .navigationTitle("Bảng điều khiển")
+        }
+        .onAppear {
+            viewModel.getTelemetry()
+            viewModel.postQuery()
         }
     }
 }
