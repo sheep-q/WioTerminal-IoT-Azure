@@ -31,6 +31,34 @@ class TelemetryViewModel: ObservableObject {
     
     @Published var banerColor: Color = Color(hex: Constant.banerGreen)
     @Published var banerTitle: BanerTitle = .green
+    @Published var tempColor: Color = Color(hex: Constant.banerGreen) {
+        didSet {
+            if tempColor == Color(hex: Constant.banerRed) || humiColor == Color(hex: Constant.banerRed) {
+                banerColor = Color(hex: Constant.banerRed)
+                banerTitle = .red
+            } else if tempColor == Color(hex: Constant.banerYellow) || humiColor == Color(hex: Constant.banerYellow) {
+                banerColor = Color(hex: Constant.banerYellow)
+                banerTitle = .yellow
+            } else {
+                banerColor = Color(hex: Constant.greyColor)
+                banerTitle = .green
+            }
+        }
+    }
+    @Published var humiColor: Color = Color(hex: Constant.banerGreen) {
+        didSet {
+            if tempColor == Color(hex: Constant.banerRed) || humiColor == Color(hex: Constant.banerRed) {
+                banerColor = Color(hex: Constant.banerRed)
+                banerTitle = .red
+            } else if tempColor == Color(hex: Constant.banerYellow) || humiColor == Color(hex: Constant.banerYellow) {
+                banerColor = Color(hex: Constant.banerYellow)
+                banerTitle = .yellow
+            } else {
+                banerColor = Color(hex: Constant.greyColor)
+                banerTitle = .green
+            }
+        }
+    }
     
     @Published var specialRequestEnabled = false {
         didSet {
@@ -99,12 +127,15 @@ class TelemetryViewModel: ObservableObject {
     }
     
     // MARK: -  get Telemetry
-    func getTelemetry() {
+    func getTelemetry(complitionTemp: @escaping ((Int) -> Void),
+                      complitionHumi: @escaping ((Int) -> Void),
+                      complitionLight: @escaping ((Int) -> Void)) {
         ApiManager.shared.getTelemetry(telemetry: "temp") {
             switch  $0 {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.temp = telemetry?.value ?? 0
+                    complitionTemp(self.temp)
                 }
             case let .failure(err):
                 DispatchQueue.main.async {
@@ -120,6 +151,7 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.humi = telemetry?.value ?? 0
+                    complitionTemp(self.humi)
                 }
             case let .failure(err):
                 DispatchQueue.main.async {
@@ -135,6 +167,7 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.light = telemetry?.value ?? 0
+                    complitionTemp(self.light)
                 }
             case let .failure(err):
                 DispatchQueue.main.async {

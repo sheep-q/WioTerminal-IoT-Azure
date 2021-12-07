@@ -117,7 +117,7 @@ struct BanerView: View {
                                     VStack {
                                         Text("\(viewModel.temp)")
                                             .font(.custom(Font.nunitoRegular, size: 35))
-                                            .foregroundColor(Color(hex: Constant.greyColor))
+                                            .foregroundColor(viewModel.tempColor)
                                         + Text("°C")
                                             .font(.custom(Font.nunitoRegular, size: 15))
                                             .foregroundColor(Color(hex: Constant.greyColor))
@@ -133,7 +133,7 @@ struct BanerView: View {
                                     VStack {
                                         Text("\(viewModel.humi)")
                                             .font(.custom(Font.nunitoRegular, size: 35))
-                                            .foregroundColor(Color(hex: Constant.greyColor))
+                                            .foregroundColor(viewModel.humiColor)
                                         + Text("%RH")
                                             .font(.custom(Font.nunitoRegular, size: 15))
                                             .foregroundColor(Color(hex: Constant.greyColor))

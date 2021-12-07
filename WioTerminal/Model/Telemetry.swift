@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Telemetry: Codable {
     let timestamp: String

@@ -29,6 +29,7 @@ struct MonitorView: View {
     
     @State private var showSafari = false
     @State private var urlString = "https://wioterminal.azureiotcentral.com/rules"
+    @State private var viewDidLoad: Bool = true
     var body: some View {
         NavigationView {
             ZStack {
@@ -298,91 +299,6 @@ struct MonitorView: View {
                         
                         Divider()
                             .padding(.horizontal)
-                        
-                        //                        HStack {
-                        //                            Text("Đặt điều kiện")
-                        //                                .font(.custom(Font.nunutiBold, size: 25))
-                        //                                .foregroundColor(Color(hex: Constant.greyColor))
-                        //                            Spacer()
-                        //                        }
-                        //                        .padding(.horizontal, 20)
-                        //                        .offset(y: 10)
-                        //
-                        //                        ZStack {
-                        //
-                        //                            VStack {
-                        //                                Text("Đặt ra các điều kiện để khi chúng xảy ra, bạn sẽ nhận được thông báo qua Outlook")
-                        //                                    .font(.custom(Font.nunitoRegular, size: 15))
-                        //                                    .foregroundColor(Color(hex: Constant.greyColor))
-                        //                                Spacer()
-                        //                            }
-                        //                            .padding(.horizontal, 25)
-                        //
-                        //                            Form {
-                        //                                HStack {
-                        //                                    Text("Cài đặt điều kiện")
-                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
-                        //                                        .foregroundColor(.black)
-                        //                                    Spacer()
-                        //                                    Image(systemName: "chevron.forward")
-                        //                                }
-                        //                                .onTapGesture {
-                        //                                    urlString = "https://wioterminal.azureiotcentral.com/rules"
-                        //                                    self.showSafari.toggle()
-                        //                                }
-                        //                            }
-                        //                            .frame(height: 130)
-                        //                            .offset(y: 20)
-                        //                        }
-                        //
-                        //                        Divider()
-                        //                            .padding(.horizontal)
-                        //
-                        //                        HStack {
-                        //                            Text("Đặt lịch")
-                        //                                .font(.custom(Font.nunutiBold, size: 25))
-                        //                                .foregroundColor(Color(hex: Constant.greyColor))
-                        //                            Spacer()
-                        //                        }
-                        //                        .padding(.horizontal, 20)
-                        //                        .offset(y: 10)
-                        //
-                        //                        ZStack {
-                        //
-                        //                            VStack {
-                        //                                Text("Đặt các điều khiển theo lịch trình cụ thể.\nXem lịch sử các điều khiển đặt lịch đã được thực thi.")
-                        //                                    .font(.custom(Font.nunitoRegular, size: 15))
-                        //                                    .foregroundColor(Color(hex: Constant.greyColor))
-                        //                                Spacer()
-                        //                            }
-                        //                            .padding(.horizontal, 25)
-                        //
-                        //                            Form {
-                        //                                HStack {
-                        //                                    Text("Đặt lịch")
-                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
-                        //                                    Spacer()
-                        //                                    Image(systemName: "chevron.forward.2")
-                        //                                }
-                        //                                .onTapGesture {
-                        //                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/definitions/create/configure"
-                        //                                    self.showSafari.toggle()
-                        //                                }
-                        //
-                        //                                HStack {
-                        //                                    Text("Lịch sử điều khiển")
-                        //                                        .font(.custom(Font.nunitoRegular, size: 17))
-                        //                                    Spacer()
-                        //                                    Image(systemName: "chevron.forward.2")
-                        //                                }
-                        //                                .onTapGesture {
-                        //                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/instances"
-                        //                                    self.showSafari.toggle()
-                        //                                }
-                        //                            }
-                        //                            .frame(height: 200)
-                        //                            .offset(y: 20)
-                        //                        }
                     }
                 }
             }
@@ -394,17 +310,49 @@ struct MonitorView: View {
                     .font(.custom(Font.nunutiBold, size: 18))
             })
             .fullScreenCover(isPresented: $isShowDeviceView, onDismiss: {
-                viewModel.getTelemetry()
+                getTelemetry()
                 viewModel.postQuery()
             }, content: {
                 DeviceView()
             })
             .navigationTitle("Bảng điều khiển")
         }
+        .onChange(of: device, perform: { newValue in
+            viewDidLoad = true
+        })
         .onAppear {
-            viewModel.getTelemetry()
-            viewModel.postQuery()
+            getTelemetry()
+            if viewDidLoad {
+                viewDidLoad = false
+                viewModel.postQuery()
+            }
         }
+    }
+    
+    private func getTelemetry() {
+        viewModel.getTelemetry(complitionTemp: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleTempLow) - 5 || value > Int(rule.ruleTempHigh) + 5 {
+                    viewModel.tempColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleTempLow) && value < Int(rule.ruleTempHigh) {
+                    viewModel.tempColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.tempColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionHumi: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleHumiLow) - 5 || value > Int(rule.ruleHumiHigh) + 5 {
+                    viewModel.humiColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleHumiLow) && value < Int(rule.ruleHumiHigh) {
+                    viewModel.humiColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.humiColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionLight: { value in
+            
+        })
     }
 }
 
