@@ -77,7 +77,7 @@ struct EditDeviceView: View {
                                 Stepper("\(ruleTempLow, specifier: "%.2f") \(Constant.doC)", value: $ruleTempLow, in: -10...50, step: 0.5)
                             }
                             HStack {
-                                Text("Giá trị nhỏ nhất")
+                                Text("Giá trị lớn nhất")
                                 Stepper("\(ruleTempHigh, specifier: "%.2f") \(Constant.doC)", value: $ruleTempHigh, in: -10...50, step: 0.5)
                             }
                         }
@@ -88,7 +88,7 @@ struct EditDeviceView: View {
                                 Stepper("\(ruleHumiLow, specifier: "%.2f") %RH", value: $ruleHumiLow, in: 0...100, step: 5)
                             }
                             HStack {
-                                Text("Giá trị nhỏ nhất")
+                                Text("Giá trị lớn nhất")
                                 Stepper("\(ruleHumiHigh, specifier: "%.2f") %RH", value: $ruleHumiHigh, in: 0...100, step: 5)
                             }
                         }

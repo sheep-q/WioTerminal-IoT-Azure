@@ -17,6 +17,8 @@ struct TelemetryView: View {
     @StateObject var viewModel = TelemetryViewModel()
     @State private var isShowDeviceView = false
     
+    @State private var viewDidLoad: Bool = true
+    
     init(){
         UITableView.appearance().backgroundColor = .clear
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(red: 108/255, green: 117/255, blue: 125/255, alpha: 1)]
@@ -206,20 +208,50 @@ struct TelemetryView: View {
                     .font(.custom(Font.nunutiBold, size: 18))
             })
             .fullScreenCover(isPresented: $isShowDeviceView, onDismiss: {
-                viewModel.getTelemetry()
+                getTelemetry()
                 viewModel.postQuery()
-                getListDevices()
             }, content: {
                 DeviceView()
             })
             .navigationTitle("Wio Terminal")
         }
+        .onChange(of: device, perform: { newValue in
+            viewDidLoad = true
+        })
         .onAppear {
-            viewModel.getTelemetry()
-            viewModel.postQuery()
-            
-            getListDevices()
+            getTelemetry()
+            if viewDidLoad {
+                viewDidLoad = false
+                viewModel.postQuery()
+                getListDevices()
+            }
         }
+    }
+    
+    private func getTelemetry() {
+        viewModel.getTelemetry(complitionTemp: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleTempLow) - 5 || value > Int(rule.ruleTempHigh) + 5 {
+                    viewModel.tempColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleTempLow) && value < Int(rule.ruleTempHigh) {
+                    viewModel.tempColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.tempColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionHumi: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleHumiLow) - 5 || value > Int(rule.ruleHumiHigh) + 5 {
+                    viewModel.humiColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleHumiLow) && value < Int(rule.ruleHumiHigh) {
+                    viewModel.humiColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.humiColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionLight: { value in
+            
+        })
     }
     
     private func getListDevices() {

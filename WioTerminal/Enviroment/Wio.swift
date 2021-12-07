@@ -7,7 +7,11 @@
 
 import Foundation
 
-class Device: Identifiable, Codable {
+class Device: Identifiable, Codable, Equatable {
+    static func == (lhs: Device, rhs: Device) -> Bool {
+        return lhs.templateID == rhs.templateID
+    }
+    
     let id = UUID()
     var name = "Wio Terminal"
     var templateID = ""
