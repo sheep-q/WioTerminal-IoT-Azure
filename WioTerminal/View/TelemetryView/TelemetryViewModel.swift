@@ -15,20 +15,27 @@ enum CommandRequest {
 }
 
 class TelemetryViewModel: ObservableObject {
-    @EnvironmentObject var wio: Wio
-    
     @Published var temp: Int = 7
     @Published var humi: Int = 17
     @Published var light: Int = 27
     @Published var soil: Int = 0
+    
+    @Published var transportDatas = [PositionModel]()
+    @Published var currentLocation: Int = 0
+    
+    var isFirstTime = true
+    private var timeLoop = 0
     
     @Published var queryItems = [Item]()
     @Published var tempItems: [Double] = []
     @Published var tempDatas: [(String, Double)]
     @Published var humiDatas: [(String, Double)]
     @Published var lightDatas: [(String, Double)]
-    @Published var offsetY: CGFloat = 0
+    @Published var xDatas: [Double]
+    @Published var yDatas: [Double]
+    @Published var zDatas: [Double]
     
+    @Published var offsetY: CGFloat = 0
     @Published var banerColor: Color = Color(hex: Constant.banerGreen)
     @Published var banerTitle: BanerTitle = .green
     @Published var tempColor: Color = Color(hex: Constant.banerGreen) {
@@ -87,12 +94,10 @@ class TelemetryViewModel: ObservableObject {
         self.lightDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
         
         self.queryItems = [
-            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
-            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
-            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
-            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17),
-            Item(id: UUID(), time: "", temp: 17, humi: 27, light: 17)
         ]
+        self.xDatas = [0.33, 0.15, 0.02, -0.15, 0.215, 0, 0.15, -0.15]
+        self.yDatas = [0.02, -0.15, -0.15, 0.15, 0.3, 0, 0.14, 0.38]
+        self.zDatas = [0.38, 0.14, 0, -0.12, -0.5, 0, 0.2, 0.3]
     }
     
     // MARK: - get list devices
@@ -151,7 +156,7 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.humi = telemetry?.value ?? 0
-                    complitionTemp(self.humi)
+                    complitionHumi(self.humi)
                 }
             case let .failure(err):
                 DispatchQueue.main.async {
@@ -167,7 +172,7 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.light = telemetry?.value ?? 0
-                    complitionTemp(self.light)
+                    complitionLight(self.light)
                 }
             case let .failure(err):
                 DispatchQueue.main.async {
@@ -179,7 +184,93 @@ class TelemetryViewModel: ObservableObject {
         }
     }
     
-    // MARK: -  post Query
+    // MARK: - get location
+    func getLocation(complition: @escaping ((Int) -> Void)) {
+        transportDatas = []
+        ApiManager.shared.getTelemetry(telemetry: "location") {
+            switch  $0 {
+            case let .success(location):
+                guard let location = location?.value else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.currentLocation = location
+                    self.transportDatas = PositionModel.mock()
+                }
+                complition(location)
+                
+            case let .failure(err):
+                DispatchQueue.main.async {
+                    self.temp = 7
+                }
+                print("failed")
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: -  post Query location
+    func postQueryLocation(location: Int = 1, complition: @escaping(() -> Void)) {
+        let body =  APIConstant.getBodyLocation(location: location)
+        ApiManager.shared.postQuery(body: body) {
+            switch $0 {
+            case let .success(locations):
+                print(location)
+                if let locationItem = locations?.results?.last {
+                    print(locationItem)
+                }
+                
+                if self.isFirstTime {
+                    self.isFirstTime = false
+                    self.timeLoop = location
+                }
+                
+                self.timeLoop += 1
+                
+                if self.timeLoop <= self.currentLocation {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.postQueryLocation(location: self.timeLoop, complition: complition)
+                    }
+                }
+                
+            case let .failure(err):
+                printDebug("faild, body: \(body)")
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: -  post Query xyz
+    func postQueryAccel(body: String = APIConstant.getBodyAccel(number: 60, time: TelemetryViewModel.times[1], day: 1)) {
+        ApiManager.shared.postQuery(body: body) {
+            switch  $0 {
+            case let .success(telemetry):
+                DispatchQueue.main.async {
+                    self.queryItems = telemetry?.results ?? []
+                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
+                    self.xDatas = []
+                    self.yDatas = []
+                    self.zDatas = []
+                    for item in self.queryItems {
+                        self.xDatas.append(item.x ?? 0)
+                        self.yDatas.append(item.y ?? 0)
+                        self.zDatas.append(item.z ?? 0)
+                    }
+                }
+            case let .failure(err):
+                printDebug("faild, body: \(body)")
+                DispatchQueue.main.async {
+                    self.xDatas = [0.33, 0.15, 0.02, -0.15, 0.215, 0, 0.15, -0.15]
+                    self.yDatas = [0.02, -0.15, -0.15, 0.15, 0.3, 0, 0.14, 0.38]
+                    self.zDatas = [0.38, 0.14, 0, -0.12, -0.5, 0, 0.2, 0.3]
+                }
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: -  post Query temp, humi, light
     func postQuery(body: String = APIConstant.getBody(number: 60, time: TelemetryViewModel.times[1], day: 1)) {
         ApiManager.shared.postQuery(body: body) {
             switch  $0 {
@@ -194,7 +285,7 @@ class TelemetryViewModel: ObservableObject {
                         let time: String = convertToDate(string: item.time)
                         self.tempDatas.append((time, item.temp ?? 0))
                         self.humiDatas.append((time, item.humi ?? 0))
-                        self.lightDatas.append((time, item.humi ?? 0))
+                        self.lightDatas.append((time, item.light ?? 0))
                     }
                 }
             case let .failure(err):

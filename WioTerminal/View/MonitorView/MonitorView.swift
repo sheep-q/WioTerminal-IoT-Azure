@@ -21,6 +21,8 @@ struct MonitorView: View {
     
     @State var pushTempDetailViewActive = false
     @State var pushHumiDetailViewActive = false
+    @State var pushLightDetailViewActive = false
+    @State var pushAccelDetailViewActive = false
     
     @State private var isShowDeviceView = false
     var device: Device? {
@@ -152,6 +154,15 @@ struct MonitorView: View {
                                             .foregroundColor(Color(hex: Constant.greyColor))
                                     }
                                 }
+                                .gesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            pushLightDetailViewActive = true
+                                        }
+                                )
+                                .sheet(isPresented: $pushLightDetailViewActive) {
+                                    DetailTelemery(viewModel: self.viewModel, navigationTitle: .light)
+                                }
                                 
                                 Spacer()
                                 
@@ -209,15 +220,26 @@ struct MonitorView: View {
                                         .shadow(color: Color(hex: "e5e5e5"), radius: 2, x: -1, y: 1.5)
                                     
                                     VStack {
-                                        Image("lock")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 40)
-                                            .padding(10)
-                                        
-                                        Text("Chống trộm")
-                                            .font(.custom(Font.nunitoRegular, size: 15))
-                                            .foregroundColor(Color(hex: Constant.greyColor))
+                                        Group {
+                                            Image("lock")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 40)
+                                                .padding(10)
+                                            
+                                            Text("Chuyển động")
+                                                .font(.custom(Font.nunitoRegular, size: 15))
+                                                .foregroundColor(Color(hex: Constant.greyColor))
+                                        }
+                                        .gesture(
+                                            TapGesture()
+                                                .onEnded { _ in
+                                                    pushAccelDetailViewActive = true
+                                                }
+                                        )
+                                        .sheet(isPresented: $pushAccelDetailViewActive) {
+                                            DetailTelemery(viewModel: self.viewModel, navigationTitle: .acccel)
+                                        }
                                         
                                         Toggle(isOn: $lockToggle) {
                                             Text("")
@@ -268,7 +290,7 @@ struct MonitorView: View {
                                 
                                 Spacer()
                                 
-                                // MARK: -  speaker
+                                // MARK: -  +
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 40)
                                         .fill(Color.white)
@@ -312,6 +334,7 @@ struct MonitorView: View {
             .fullScreenCover(isPresented: $isShowDeviceView, onDismiss: {
                 getTelemetry()
                 viewModel.postQuery()
+                viewModel.postQueryAccel()
             }, content: {
                 DeviceView()
             })
@@ -325,6 +348,7 @@ struct MonitorView: View {
             if viewDidLoad {
                 viewDidLoad = false
                 viewModel.postQuery()
+                viewModel.postQueryAccel()
             }
         }
     }

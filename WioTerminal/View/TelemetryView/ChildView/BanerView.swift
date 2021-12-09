@@ -18,6 +18,7 @@ struct BanerView: View {
     @State var statusString: String
     @ObservedObject var viewModel: TelemetryViewModel
     @State var isShowDetail = false
+    @State var isShowingEditDeviceView = false
     
     init (viewModel: TelemetryViewModel,
           connectionString: String,
@@ -80,12 +81,6 @@ struct BanerView: View {
                         RoundedRectangle(cornerRadius: 15)
                             .fill(.white)
                             .frame(width: 270, height: 150)
-                            .gesture(
-                                TapGesture()
-                                    .onEnded { _ in
-                                        print("tapped temp + humi")
-                                    }
-                            )
                         
                         RoundedRectangle(cornerRadius: 15)
                             .strokeBorder(style: StrokeStyle(lineWidth: 3, dash: [10], dashPhase: phase))
@@ -144,6 +139,12 @@ struct BanerView: View {
                                     }
                                     .padding(.trailing, 105)
                                 }
+                                .gesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            isShowingEditDeviceView = true
+                                        }
+                                )
                             }
                         }
                     }
@@ -152,13 +153,37 @@ struct BanerView: View {
             .sheet(isPresented: $isShowDetail) {
                 DetailBanerView()
             }
-//            .fullScreenCover(isPresented: $isShowDetail) {
-//                //
-//            } content: {
-//                DetailBanerView()
-//            }
-
-       // }
+            .sheet(isPresented: $isShowingEditDeviceView) {
+                getTelemetry()
+            } content: {
+                EditDeviceView(device: device ?? Device())
+            }
+    }
+    
+    private func getTelemetry() {
+        viewModel.getTelemetry(complitionTemp: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleTempLow) - 5 || value > Int(rule.ruleTempHigh) + 5 {
+                    viewModel.tempColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleTempLow) && value < Int(rule.ruleTempHigh) {
+                    viewModel.tempColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.tempColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionHumi: { value in
+            if let rule = device?.rule {
+                if value < Int (rule.ruleHumiLow) - 5 || value > Int(rule.ruleHumiHigh) + 5 {
+                    viewModel.humiColor = Color(hex: Constant.banerRed)
+                } else if value > Int(rule.ruleHumiLow) && value < Int(rule.ruleHumiHigh) {
+                    viewModel.humiColor = Color(hex: Constant.banerGreen)
+                } else {
+                    viewModel.humiColor = Color(hex: Constant.banerYellow)
+                }
+            }
+        }, complitionLight: { value in
+            
+        })
     }
 }
 
