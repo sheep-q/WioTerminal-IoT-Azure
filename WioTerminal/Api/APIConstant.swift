@@ -31,6 +31,34 @@ class APIConstant {
         
         return "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
     }
+    
+    static func getBodyAccel(number: Int, time: String, day: Int) -> String {
+        var timeString = ""
+        
+        if time == TelemetryViewModel.times[0] {
+            timeString = "S"
+        } else if time == TelemetryViewModel.times[1] {
+            timeString = "M"
+        } else {
+            timeString = "H"
+        }
+        
+        return "SELECT MAX(accelX), MAX(accelY), MAX(accelZ) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
+    }
+    
+    static func getBodyLocation(location: Int, number: Int = 30, time: String = TelemetryViewModel.times[1], day: Int = 7) -> String {
+        var timeString = ""
+        
+        if time == TelemetryViewModel.times[0] {
+            timeString = "S"
+        } else if time == TelemetryViewModel.times[1] {
+            timeString = "M"
+        } else {
+            timeString = "H"
+        }
+        
+        return "SELECT MAX(temp), MAX(humi), MAX(location) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND location = \(location) GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
+    }
 }
 
 struct Path {

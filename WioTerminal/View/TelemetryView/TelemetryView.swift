@@ -16,6 +16,7 @@ struct TelemetryView: View {
     
     @StateObject var viewModel = TelemetryViewModel()
     @State private var isShowDeviceView = false
+    @State private var isShowingDeliveryView = false
     
     @State private var viewDidLoad: Bool = true
     
@@ -58,6 +59,19 @@ struct TelemetryView: View {
                         
                         //MARK: - Change Baner
                         HStack {
+                            HStack(alignment: .bottom) {
+                                Text("vận chuyển")
+                                    .font(.custom(Font.nunitoBoldItalic, size: 15))
+                                    .foregroundColor(Color(hex: Constant.greyColor))
+                                    .underline()
+                                Image("delivery")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30)
+                            }
+                            .onTapGesture {
+                                isShowingDeliveryView = true
+                            }
                             Spacer()
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color(hex: "2a9d8f"))
@@ -96,6 +110,7 @@ struct TelemetryView: View {
                         
                         // MARK: -  BanerView
                         BanerView(viewModel: self.viewModel, connectionString: "đã kết nối", statusString: "bảo quản tốt")
+                            .offset(y: -5)
                         
                         HStack {
                             Spacer()
@@ -212,6 +227,11 @@ struct TelemetryView: View {
                 viewModel.postQuery()
             }, content: {
                 DeviceView()
+            })
+            .fullScreenCover(isPresented: $isShowingDeliveryView, onDismiss: {
+                
+            }, content: {
+                DeliveryView()
             })
             .navigationTitle("Wio Terminal")
         }

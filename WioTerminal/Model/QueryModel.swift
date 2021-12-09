@@ -13,12 +13,20 @@ struct Item: Codable, Hashable {
     var temp: Double?
     var humi: Double?
     var light: Double?
+    var x: Double?
+    var y: Double?
+    var z: Double?
+    var location: Int?
     
     enum CodingKeys: String, CodingKey {
         case time = "$ts"
         case temp = "max_temp"
         case humi = "max_humi"
         case light = "max_light"
+        case x = "max_accelX"
+        case y = "max_accelY"
+        case z = "max_accelZ"
+        case location = "max_location"
     }
     
     static func == (lhs: Item, rhs: Item) -> Bool {
@@ -31,5 +39,5 @@ struct Item: Codable, Hashable {
 }
 
 struct QueryModel: Codable {
-    let results: [Item]
+    let results: [Item]?
 }

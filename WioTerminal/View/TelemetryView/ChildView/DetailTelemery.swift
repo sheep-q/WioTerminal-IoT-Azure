@@ -12,31 +12,46 @@ enum DetailType: String {
     case temp
     case humi
     case light
+    case acccel
 }
 
 struct DetailTelemery: View {
     @ObservedObject var viewModel = TelemetryViewModel()
     var navigationTitle = DetailType.temp
     
+    private var titleString = ""
+    
     init (viewModel: TelemetryViewModel,
           navigationTitle: DetailType) {
         self.viewModel = viewModel
         self.navigationTitle = navigationTitle
+        switch navigationTitle {
+        case .temp:
+            titleString = "Nhiệt độ"
+        case .humi:
+            titleString = "Độ ẩm"
+        case .light:
+            titleString = "Ánh sáng"
+        case .acccel:
+            titleString = "Chuyển động"
+        }
     }
     var body: some View {
         NavigationView {
             ZStack {
                 Color(hex: Constant.backgroundColor)
-                    .ignoresSafeArea(edges: .top)
+                    .ignoresSafeArea(edges: .all)
                 VStack {
                     
                     switch navigationTitle {
                     case .temp:
-                        BarChartView(data: ChartData(values: viewModel.tempDatas), title: "Nhiệt độ", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                        BarChartView(data: ChartData(values: viewModel.tempDatas), title: titleString, style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
                     case .humi:
-                        BarChartView(data: ChartData(values: viewModel.humiDatas), title: "Độ ẩm", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                        BarChartView(data: ChartData(values: viewModel.humiDatas), title: titleString, style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
                     case .light:
-                        Text("Light")
+                        BarChartView(data: ChartData(values: viewModel.lightDatas), title: titleString, style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                    case .acccel:
+                        MultiLineChartView(data: [(viewModel.xDatas, GradientColors.green), (viewModel.yDatas, GradientColors.purple), (viewModel.zDatas, GradientColors.orngPink)], title: "", form: ChartForm.extraLarge)
                     }
                     
                     Form {
@@ -95,7 +110,7 @@ struct DetailTelemery: View {
                     }
                 }
             }
-            .navigationTitle(navigationTitle == .temp ? "Nhiệt độ" : "Độ ẩm")
+            .navigationTitle(titleString)
         }
     }
 }

@@ -18,7 +18,8 @@ struct EditDeviceView: View {
     @State private var ruleTempHigh: Double
     @State private var ruleHumiLow: Double
     @State private var ruleHumiHigh: Double
-    @State private var isShowingAlert: Bool = false
+    @State private var isShowingAlert = false
+    @State private var isError = false
     
     var device: Device
     
@@ -96,7 +97,11 @@ struct EditDeviceView: View {
                     
                     if #available(iOS 15.0, *) {
                         Button(action: {
-                            isShowingAlert = true
+                            if ruleTempLow >= ruleTempHigh || ruleHumiLow >= ruleHumiHigh {
+                                isError = true
+                                isShowingAlert = true
+                                return
+                            }
                             let device = Device()
                             device.name = name
                             device.templateID = templateID
@@ -106,6 +111,7 @@ struct EditDeviceView: View {
                             device.rule.ruleHumiLow = ruleHumiLow
                             device.rule.ruleHumiHigh = ruleHumiHigh
                             self.wio.edit(device)
+                            isShowingAlert = true
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 7)
@@ -118,8 +124,14 @@ struct EditDeviceView: View {
                             }
                         }
                         .offset(y: -100)
-                        .alert("Đã lưu thành công", isPresented: $isShowingAlert) {
-                            Button("OK", role: .cancel) { }
+                        .alert(isError ? "Lỗi \nHãy kiểm tra lại điều kiện" : "Đã lưu thành công", isPresented: $isShowingAlert) {
+                            if isError {
+                                Button("Thử lại", role: .cancel) {
+                                    self.isError = false
+                                }
+                            } else {
+                                Button("OK", role: .cancel) { }
+                            }
                         }
                     } else {
                         // Fallback on earlier versions
