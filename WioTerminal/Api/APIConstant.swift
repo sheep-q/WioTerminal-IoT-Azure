@@ -12,7 +12,7 @@ class APIConstant {
     //MARK: - domain
     static var subDomain = "wioterminal"
     static var baseDomain = "https://\(subDomain).azureiotcentral.com/api"
-    static var authorizationString = "SharedAccessSignature sr=05c490cd-8baf-4b72-94cd-72b20ae5205c&sig=RxXDS0OsUcNhMFHjGgeIkCT7WtYV09YGzA2kFWvMLt4%3D&skn=token&se=1670054841225"
+    static var authorizationString = "SharedAccessSignature sr=62758385-da30-4782-95d3-18ec723c0d02&sig=zK%2F5DeHI%2FUIJc%2F8THyx%2FC2QViPrSZeo6E0aVzXShgl8%3D&skn=token&se=1670820685000"
     
     // MARK: - device
 //    static var deviceId = "Device01"

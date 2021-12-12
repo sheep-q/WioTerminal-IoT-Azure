@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item: Codable, Hashable {
+struct Item: Codable, Hashable, Identifiable {
     var id = UUID()
     var time: String
     var temp: Double?
@@ -17,6 +17,7 @@ struct Item: Codable, Hashable {
     var y: Double?
     var z: Double?
     var location: Int?
+    var name: String?
     
     enum CodingKeys: String, CodingKey {
         case time = "$ts"
