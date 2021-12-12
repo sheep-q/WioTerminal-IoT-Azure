@@ -30,6 +30,7 @@
 		469E43A9275FA36D00DFAE47 /* TransportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E43A8275FA36D00DFAE47 /* TransportView.swift */; };
 		469E43AD275FB7ED00DFAE47 /* PostionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E43AC275FB7ED00DFAE47 /* PostionModel.swift */; };
 		46A896D7274C0B4F0022F3A0 /* PostCommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */; };
+		46AE404927631AB500533391 /* TransportViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE404827631AB500533391 /* TransportViewRow.swift */; };
 		46B3FCA22750993F0037760F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B3FCA12750993F0037760F /* SafariView.swift */; };
 		46DA1D21275F8B73003A7E6E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DA1D20275F8B73003A7E6E /* MapView.swift */; };
 		46DA1D23275F8C35003A7E6E /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DA1D22275F8C35003A7E6E /* DeliveryView.swift */; };
@@ -79,6 +80,7 @@
 		469E43A8275FA36D00DFAE47 /* TransportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportView.swift; sourceTree = "<group>"; };
 		469E43AC275FB7ED00DFAE47 /* PostionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostionModel.swift; sourceTree = "<group>"; };
 		46A896D6274C0B4F0022F3A0 /* PostCommandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommandModel.swift; sourceTree = "<group>"; };
+		46AE404827631AB500533391 /* TransportViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewRow.swift; sourceTree = "<group>"; };
 		46B3FCA12750993F0037760F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		46DA1D20275F8B73003A7E6E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		46DA1D22275F8C35003A7E6E /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				46DA1D20275F8B73003A7E6E /* MapView.swift */,
 				46DA1D22275F8C35003A7E6E /* DeliveryView.swift */,
 				469E43A8275FA36D00DFAE47 /* TransportView.swift */,
+				46AE404827631AB500533391 /* TransportViewRow.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				467BC14E2756734D00D90AE5 /* ListDeviceModel.swift in Sources */,
 				468B47DE2745623000571960 /* Constant.swift in Sources */,
 				E3F2867F27436EC7005599BF /* ProfileModel.swift in Sources */,
+				46AE404927631AB500533391 /* TransportViewRow.swift in Sources */,
 				E318895A274EAB8A00848C0B /* DetailBanerView.swift in Sources */,
 				46DA1D21275F8B73003A7E6E /* MapView.swift in Sources */,
 				46F8D60027561E800030FCA3 /* AddNewDeviceView.swift in Sources */,

@@ -21,6 +21,7 @@ class TelemetryViewModel: ObservableObject {
     @Published var soil: Int = 0
     
     @Published var transportDatas = [PositionModel]()
+    @Published var mockItems: [Item] = PositionModel.mockItems()
     @Published var currentLocation: Int = 0
     
     var isFirstTime = true
@@ -31,6 +32,7 @@ class TelemetryViewModel: ObservableObject {
     @Published var tempDatas: [(String, Double)]
     @Published var humiDatas: [(String, Double)]
     @Published var lightDatas: [(String, Double)]
+    @Published var locationDatas = [Item]()
     @Published var xDatas: [Double]
     @Published var yDatas: [Double]
     @Published var zDatas: [Double]
@@ -47,7 +49,7 @@ class TelemetryViewModel: ObservableObject {
                 banerColor = Color(hex: Constant.banerYellow)
                 banerTitle = .yellow
             } else {
-                banerColor = Color(hex: Constant.greyColor)
+                banerColor = Color(hex: Constant.banerGreen)
                 banerTitle = .green
             }
         }
@@ -61,7 +63,7 @@ class TelemetryViewModel: ObservableObject {
                 banerColor = Color(hex: Constant.banerYellow)
                 banerTitle = .yellow
             } else {
-                banerColor = Color(hex: Constant.greyColor)
+                banerColor = Color(hex: Constant.banerGreen)
                 banerTitle = .green
             }
         }
@@ -196,7 +198,7 @@ class TelemetryViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self.currentLocation = location
-                    self.transportDatas = PositionModel.mock()
+                    self.objectWillChange.send()
                 }
                 complition(location)
                 
@@ -217,13 +219,27 @@ class TelemetryViewModel: ObservableObject {
             switch $0 {
             case let .success(locations):
                 print(location)
-                if let locationItem = locations?.results?.last {
-                    print(locationItem)
-                }
                 
                 if self.isFirstTime {
                     self.isFirstTime = false
+                    DispatchQueue.main.async {
+                        self.locationDatas = []
+                    }
                     self.timeLoop = location
+                }
+                
+                if var locationItem = locations?.results?.last {
+                    DispatchQueue.main.async {
+                        locationItem.name = self.mockItems[location - 1].name
+                        locationItem.location = location
+                        self.objectWillChange.send()
+                        self.locationDatas.append(locationItem)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.locationDatas.append(self.locationDatas[location - 1])
+                        self.locationDatas[location].location = location
+                    }
                 }
                 
                 self.timeLoop += 1
@@ -231,6 +247,13 @@ class TelemetryViewModel: ObservableObject {
                 if self.timeLoop <= self.currentLocation {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.postQueryLocation(location: self.timeLoop, complition: complition)
+                    }
+                } else {
+                    let mockItems = PositionModel.mockItems()
+                    DispatchQueue.main.async {
+                        for i in self.timeLoop...mockItems.count {
+                            self.locationDatas.append(mockItems[i-1])
+                        }
                     }
                 }
                 
@@ -324,6 +347,20 @@ public func convertToHour(string: String) -> String {
     
     let dateFormatter1 = DateFormatter()
     dateFormatter1.dateFormat = "HH:mm:ss"
+    dateFormatter1.timeZone = TimeZone.current
+    let stringConverted = dateFormatter1.string(from: date ?? Date())
+    return stringConverted
+}
+
+public func convertToTimeArrived(string: String) -> String {
+    let timeString = string
+    let dateFomatter = DateFormatter()
+    dateFomatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    dateFomatter.timeZone = TimeZone(abbreviation: "UTC")
+    let date = dateFomatter.date(from: timeString)
+    
+    let dateFormatter1 = DateFormatter()
+    dateFormatter1.dateFormat = "HH:mm:ss MM-dd-yyyy"
     dateFormatter1.timeZone = TimeZone.current
     let stringConverted = dateFormatter1.string(from: date ?? Date())
     return stringConverted

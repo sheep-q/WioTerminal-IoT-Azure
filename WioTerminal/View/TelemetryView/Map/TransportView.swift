@@ -8,40 +8,49 @@
 import SwiftUI
 
 struct TransportView: View {
+    
     @ObservedObject var viewModel = TelemetryViewModel()
+    @State var currentLocation: Int = 0
+    @State var isPushToView = false
     var body: some View {
         ZStack {
             Color(hex: Constant.backgroundColor)
                 .ignoresSafeArea()
-            List {
-                ForEach(viewModel.transportDatas, id: \.self) { data in
-                    Text("\(data.name)")
-                        .foregroundColor(data.location <= viewModel.currentLocation ? Color(hex: Constant.banerRed) : Color(hex: Constant.greyColor))
+            VStack {
+                List {
+                    ForEach(viewModel.locationDatas, id: \.self) { data in
+                        if #available(iOS 15.0, *) {
+                            ZStack {
+                                NavigationLink(destination:
+                                   TransportView(),
+                                   isActive: $isPushToView) {
+                                     EmptyView()
+                                }.hidden()
+                                
+                            TransportViewRow(location: data.location,
+                                             temp: data.temp,
+                                             humi: data.humi,
+                                             time: convertToTimeArrived(string: data.time),
+                                             currentLocation: viewModel.currentLocation,
+                                             nameLocation: data.name)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+                            }
+                        } else {
+                            // Fallback on earlie r versions
+                        }
+                    }
                 }
+                .listStyle(SidebarListStyle())
             }
         }
         .onAppear {
             viewModel.getLocation { currentLocation in
-                viewModel.isFirstTime = true 
+                self.currentLocation = currentLocation
+                viewModel.isFirstTime = true
                 viewModel.postQueryLocation(location: 1) {
-                    
                 }
             }
-//            let group = DispatchGroup()
-//            for i in 1...8 {
-//                group.enter()
-//                viewModel.postQueryLocation(body: APIConstant.getBodyLocation(location: i)) { item in
-//                    print(item)
-//                    print("request \(i)")
-//                    group.leave()
-//
-//
-//                }
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {}
-//            }
-//            group.notify(queue: DispatchQueue.main) {
-//                print("done")
-//            }
         }
     }
     

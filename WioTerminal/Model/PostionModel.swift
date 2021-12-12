@@ -30,4 +30,19 @@ struct PositionModel: Identifiable, Hashable {
         ]
         return data
     }
+    
+    static func mockItems() -> [Item] {
+        var data = [Item]()
+        data = [
+            Item(time: "",location: 1, name: "Thành Phố Hồ Chí Minh"),
+            Item(time: "",location: 2, name: "Thành phố Nha Trang"),
+            Item(time: "",location: 3, name: "Thành phố Đà Nẵng"),
+            Item(time: "",location: 4, name: "Thành phố Huế"),
+            Item(time: "",location: 5, name: "Thành phố Thanh Hoá"),
+            Item(time: "",location: 6, name: "Thành phố Nam Định"),
+            Item(time: "",location: 7, name: "Bến xe Giáp Bát"),
+            Item(time: "",location: 8, name: "Đại học Bách Khoa Hà Nội")
+        ]
+        return data
+    }
 }
