@@ -14,28 +14,29 @@ struct TabBarView: View {
         TabView {
             TelemetryView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("First View")
+                    Image(systemName: "display")
+                    Text("Theo dõi")
                 }
             
             MonitorView()
                 .tabItem {
-                    Image(systemName: "command.square.fill")
-                    Text("Zero View")
+                    Image(systemName: "rectangle.grid.2x2")
+                    Text("Điều khiển")
                 }
             
             SettingView()
                 .tabItem {
-                    Image(systemName: "cloud.fill")
-                    Text("Zero View")
+                    Image(systemName: "wrench.and.screwdriver.fill")
+                    Text("Cài đặt")
                 }
             
             ThirdView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
-                    Text("Third View")
+                    Text("Thông tin")
                 }
         }
+        .accentColor(Color(hex: Constant.banerRed))
     }
 }
 

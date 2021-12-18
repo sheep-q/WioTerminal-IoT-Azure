@@ -308,9 +308,9 @@
 		E3F2867C27436EA2005599BF /* TelemetryView */ = {
 			isa = PBXGroup;
 			children = (
-				46DA1D1F275F8B61003A7E6E /* Map */,
 				E3F2866F274335B0005599BF /* TelemetryView.swift */,
 				468983B52744FC48004B39E6 /* TelemetryViewModel.swift */,
+				46DA1D1F275F8B61003A7E6E /* Map */,
 				46F8D5FD27561E5E0030FCA3 /* Device */,
 				4633D20327464F520062D593 /* ChildView */,
 			);

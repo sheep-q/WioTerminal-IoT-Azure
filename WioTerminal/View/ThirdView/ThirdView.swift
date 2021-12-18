@@ -49,14 +49,20 @@ struct ThirdView: View {
                                     Link("IoT MQTT Server Github", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "link.circle")
+                                    Image("github")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
                                 }
                                 
                                 HStack {
                                     Link("Resource App Github", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "link.circle")
+                                    Image("github")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
                                 }
                             }
                             
@@ -65,21 +71,30 @@ struct ThirdView: View {
                                     Link("Đồ_án.dox", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "link.circle")
+                                    Image("word")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
                                 }
                                 
                                 HStack {
                                     Link("Đồ_án.pdf", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "link.circle")
+                                    Image("pdf")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
                                 }
                                 
                                 HStack {
                                     Link("Đồ_án.pptx", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
-                                    Image(systemName: "link.circle")
+                                    Image("pptx")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
                                 }
                             }
                         }

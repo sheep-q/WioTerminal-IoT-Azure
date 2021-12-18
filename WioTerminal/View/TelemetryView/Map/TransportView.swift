@@ -12,6 +12,8 @@ struct TransportView: View {
     @ObservedObject var viewModel = TelemetryViewModel()
     @State var currentLocation: Int = 0
     @State var isPushToView = false
+    @State var viewDidLoad = true
+    
     var body: some View {
         ZStack {
             Color(hex: Constant.backgroundColor)
@@ -19,25 +21,27 @@ struct TransportView: View {
             VStack {
                 List {
                     ForEach(viewModel.locationDatas, id: \.self) { data in
-                        if #available(iOS 15.0, *) {
-                            ZStack {
-                                NavigationLink(destination:
-                                   TransportView(),
-                                   isActive: $isPushToView) {
-                                     EmptyView()
-                                }.hidden()
-                                
-                            TransportViewRow(location: data.location,
-                                             temp: data.temp,
-                                             humi: data.humi,
-                                             time: convertToTimeArrived(string: data.time),
-                                             currentLocation: viewModel.currentLocation,
-                                             nameLocation: data.name)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+                        NavigationLink {
+                            DetailTelemery(viewModel: self.viewModel, navigationTitle: .location, location: data.location ?? 0)
+                        } label: {
+                            if #available(iOS 15.0, *) {
+                                TransportViewRow(location: data.location,
+                                                 temp: data.temp,
+                                                 humi: data.humi,
+                                                 time: convertToTimeArrived(string: data.time),
+                                                 currentLocation: viewModel.currentLocation,
+                                                 nameLocation: data.name)
+                                    .listRowSeparator(.hidden)
+                                    .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
+                            } else {
+                                TransportViewRow(location: data.location,
+                                                 temp: data.temp,
+                                                 humi: data.humi,
+                                                 time: convertToTimeArrived(string: data.time),
+                                                 currentLocation: viewModel.currentLocation,
+                                                 nameLocation: data.name)
+                                    .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
                             }
-                        } else {
-                            // Fallback on earlie r versions
                         }
                     }
                 }
@@ -45,10 +49,13 @@ struct TransportView: View {
             }
         }
         .onAppear {
-            viewModel.getLocation { currentLocation in
-                self.currentLocation = currentLocation
-                viewModel.isFirstTime = true
-                viewModel.postQueryLocation(location: 1) {
+            if viewDidLoad == true {
+                viewDidLoad = false
+                viewModel.getLocation { currentLocation in
+                    self.currentLocation = currentLocation
+                    viewModel.isFirstTime = true
+                    viewModel.postQueryLocation(location: 1) {
+                    }
                 }
             }
         }

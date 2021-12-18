@@ -264,6 +264,32 @@ class TelemetryViewModel: ObservableObject {
         }
     }
     
+    // MARK: - post query detail location
+    func postQueryDetailLocation(location: Int = 1) {
+        self.tempDatas = []
+        self.humiDatas = []
+        printDebug("location: \(location)")
+        let body =  APIConstant.getBodyLocation(location: location, number: 10, time: TelemetryViewModel.times[1], day: 7)
+        ApiManager.shared.postQuery(body: body) {
+            switch $0 {
+            case let .success(locations):
+                let data = locations?.results ?? []
+                DispatchQueue.main.async {
+                    for item in data {
+                        let time: String = convertToDate(string: item.time)
+                        self.tempDatas.append((time, item.temp ?? 0))
+                        self.humiDatas.append((time, item.humi ?? 0))
+                    }
+                }
+            case let .failure(err):
+                self.tempDatas = []
+                self.humiDatas = []
+                printDebug("faild, body: \(body)")
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: -  post Query xyz
     func postQueryAccel(body: String = APIConstant.getBodyAccel(number: 60, time: TelemetryViewModel.times[1], day: 1)) {
         ApiManager.shared.postQuery(body: body) {
@@ -271,7 +297,6 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.queryItems = telemetry?.results ?? []
-                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
                     self.xDatas = []
                     self.yDatas = []
                     self.zDatas = []
@@ -300,7 +325,7 @@ class TelemetryViewModel: ObservableObject {
             case let .success(telemetry):
                 DispatchQueue.main.async {
                     self.queryItems = telemetry?.results ?? []
-                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
+//                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
                     self.tempDatas = []
                     self.humiDatas = []
                     self.lightDatas = []
