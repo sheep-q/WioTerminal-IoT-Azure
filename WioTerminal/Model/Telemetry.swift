@@ -14,7 +14,7 @@ struct Telemetry: Codable {
 }
 
 enum BanerTitle: String {
-    case green = "rất tốt 🥰"
-    case yellow = "cảnh báo 🙄"
-    case red = "nguy hiểm 🤬"
+    case green = "rất tốt"
+    case yellow = "cảnh báo"
+    case red = "nguy hiểm"
 }

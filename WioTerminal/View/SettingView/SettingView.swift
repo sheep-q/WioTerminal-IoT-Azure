@@ -46,7 +46,7 @@ struct SettingView: View {
                                     Image(systemName: "chevron.forward")
                                 }
                                 .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/rules"
+                                    urlString = "https://wioterminalhust.azureiotcentral.com/rules"
                                     self.showSafari.toggle()
                                 }
                             }
@@ -84,7 +84,7 @@ struct SettingView: View {
                                     Image(systemName: "chevron.forward.2")
                                 }
                                 .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/definitions/create/configure"
+                                    urlString = "https://wioterminalhust.azureiotcentral.com/jobs/definitions/create/configure"
                                     self.showSafari.toggle()
                                 }
                                 
@@ -95,7 +95,7 @@ struct SettingView: View {
                                     Image(systemName: "chevron.forward.2")
                                 }
                                 .onTapGesture {
-                                    urlString = "https://wioterminal.azureiotcentral.com/jobs/instances"
+                                    urlString = "https://wioterminalhust.azureiotcentral.com/jobs/instances"
                                     self.showSafari.toggle()
                                 }
                             }
