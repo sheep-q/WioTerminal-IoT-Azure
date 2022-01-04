@@ -1,16 +1,15 @@
 {
   "images" : [
     {
+      "filename" : "vaccine.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "001-vaccine.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "001-vaccine-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

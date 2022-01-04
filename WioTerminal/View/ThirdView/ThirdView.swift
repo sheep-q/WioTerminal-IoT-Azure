@@ -46,7 +46,7 @@ struct ThirdView: View {
                         Form {
                             Section(header: Text("Resouce")) {
                                 HStack {
-                                    Link("IoT MQTT Server Github", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Wio Hust App - IoT Device", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("github")
@@ -56,7 +56,17 @@ struct ThirdView: View {
                                 }
                                 
                                 HStack {
-                                    Link("Resource App Github", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Wio Terminal - Azure IoT Central", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                    Image("github")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20, alignment: .center)
+                                }
+                                
+                                HStack {
+                                    Link("Database", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-/blob/master/seeedkk-wioterminal-wioterminal_aziot_example.json")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("github")

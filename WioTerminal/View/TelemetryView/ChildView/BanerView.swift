@@ -55,7 +55,7 @@ struct BanerView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(.white)
-                            .frame(width: 220, height: 45)
+                            .frame(width: 170, height: 45)
                         
                         HStack {
                             Image(device?.product.image ?? "vaccine")

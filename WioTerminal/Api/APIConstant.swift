@@ -10,9 +10,9 @@ import Foundation
 class APIConstant {
     
     //MARK: - domain
-    static var subDomain = "wioterminal"
+    static var subDomain = "wioterminalhust"
     static var baseDomain = "https://\(subDomain).azureiotcentral.com/api"
-    static var authorizationString = "SharedAccessSignature sr=62758385-da30-4782-95d3-18ec723c0d02&sig=zK%2F5DeHI%2FUIJc%2F8THyx%2FC2QViPrSZeo6E0aVzXShgl8%3D&skn=token&se=1670820685000"
+    static var authorizationString = "SharedAccessSignature sr=83053f7f-985c-4c39-8acd-8420653b328a&sig=VSp0zOgI7ELv1%2FkVSt8%2BXbS0ug13DCL4cqk%2BPzyueCc%3D&skn=token&se=1672830433520"
     
     // MARK: - device
 //    static var deviceId = "Device01"
