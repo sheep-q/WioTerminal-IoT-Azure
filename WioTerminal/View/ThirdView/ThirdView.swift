@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ThirdView: View {
-    
+    @EnvironmentObject var wio: Wio
     @StateObject var viewModel = ProfileViewModel()
+    @State var isAdmin = false
     
     init(){
             UITableView.appearance().backgroundColor = .clear
@@ -44,6 +45,14 @@ struct ThirdView: View {
                         .frame(height: 550)
                         
                         Form {
+                            Section(header: Text("Vai trò người dùng")) {
+                                Toggle(isOn: $isAdmin) {
+                                    Text("Admin")
+                                }
+                            }
+                            .onChange(of: isAdmin) { newValue in
+                                wio.isAdmin(isAdmin)
+                            }
                             Section(header: Text("Resouce")) {
                                 HStack {
                                     Link("Wio Hust App - IoT Device", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
@@ -108,7 +117,7 @@ struct ThirdView: View {
                                 }
                             }
                         }
-                        .frame(height: 500)
+                        .frame(height: 560)
                         .background(Color(hex: Constant.backgroundColor))
                     }
                 }

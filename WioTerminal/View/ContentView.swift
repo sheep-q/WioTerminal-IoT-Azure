@@ -12,11 +12,7 @@ struct ContentView: View {
     @State private var isLogin = true
     var body: some View {
         ZStack {
-//            if isLogin {
-//                LoginView()
-//            } else {
                 TabBarView()
-//            }
         }
         .environmentObject(wio)
     }
