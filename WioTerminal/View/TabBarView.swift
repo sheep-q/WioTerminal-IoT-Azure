@@ -24,11 +24,13 @@ struct TabBarView: View {
                     Text("Điều khiển")
                 }
             
-            SettingView()
-                .tabItem {
-                    Image(systemName: "wrench.and.screwdriver.fill")
-                    Text("Cài đặt")
-                }
+            if wio.isAdmin {
+                SettingView()
+                    .tabItem {
+                        Image(systemName: "wrench.and.screwdriver.fill")
+                        Text("Cài đặt")
+                    }
+            }
             
             ThirdView()
                 .tabItem {

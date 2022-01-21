@@ -37,6 +37,7 @@ class Wio: ObservableObject {
     @Published private(set) var devices: [Device]
     static let saveKey = "SavedData"
     static let saveDevice = "SavedDevice"
+    @Published var isAdmin: Bool = false
     
     init() {
         
@@ -87,5 +88,9 @@ class Wio: ObservableObject {
         save()
         
         objectWillChange.send()
+    }
+    
+    func isAdmin(_ bool: Bool) {
+        isAdmin = bool
     }
 }
