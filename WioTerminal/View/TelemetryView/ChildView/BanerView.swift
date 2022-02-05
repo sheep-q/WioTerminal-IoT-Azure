@@ -71,7 +71,7 @@ struct BanerView: View {
                     .gesture(
                         TapGesture()
                             .onEnded { _ in
-                                isShowDetail = true
+                                isShowingEditDeviceView = true
                             }
                     )
                     

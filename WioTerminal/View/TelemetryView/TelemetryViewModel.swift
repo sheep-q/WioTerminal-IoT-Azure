@@ -266,8 +266,8 @@ class TelemetryViewModel: ObservableObject {
     
     // MARK: - post query detail location
     func postQueryDetailLocation(location: Int = 1) {
-        self.tempDatas = []
-        self.humiDatas = []
+        self.tempDatas.removeAll()
+        self.humiDatas.removeAll()
         printDebug("location: \(location)")
         let body =  APIConstant.getBodyLocation(location: location, number: 10, time: TelemetryViewModel.times[1], day: 7)
         ApiManager.shared.postQuery(body: body) {
@@ -282,8 +282,8 @@ class TelemetryViewModel: ObservableObject {
                     }
                 }
             case let .failure(err):
-                self.tempDatas = []
-                self.humiDatas = []
+                self.tempDatas.removeAll()
+                self.humiDatas.removeAll()
                 printDebug("faild, body: \(body)")
                 print(err.localizedDescription)
             }
@@ -326,13 +326,13 @@ class TelemetryViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.queryItems = telemetry?.results ?? []
 //                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
-                    self.tempDatas = []
-                    self.humiDatas = []
-                    self.lightDatas = []
+                    self.tempDatas.removeAll()
+                    self.humiDatas.removeAll()
+                    self.lightDatas.removeAll()
                     for item in self.queryItems {
                         let time: String = convertToDate(string: item.time)
-                        self.tempDatas.append((time, item.temp ?? 0))
                         self.humiDatas.append((time, item.humi ?? 0))
+                        self.tempDatas.append((time, item.temp ?? 0))
                         self.lightDatas.append((time, item.light ?? 0))
                     }
                 }
