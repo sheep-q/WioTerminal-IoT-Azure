@@ -30,7 +30,7 @@ struct Rule: Codable, Hashable {
 
 struct Product: Codable, Hashable {
     var name: String = ""
-    var image: String = ""
+    var image: String = "boxMilk"
 }
 
 class Wio: ObservableObject {

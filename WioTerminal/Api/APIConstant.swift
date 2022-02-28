@@ -12,7 +12,7 @@ class APIConstant {
     //MARK: - domain
     static var subDomain = "wioterminalhust"
     static var baseDomain = "https://\(subDomain).azureiotcentral.com/api"
-    static var authorizationString = "SharedAccessSignature sr=22cfd67d-d646-4a28-b781-fd386e9e786f&sig=yJSPzbKT46BGUfVSrRt126yiB9B3Om5oM%2F1Kg6LbLG8%3D&skn=token&se=1674287154670"
+    static var authorizationString = "SharedAccessSignature sr=b2023458-5ebe-49ff-aa06-a22b4e38f511&sig=tQX8xdr%2BQey%2BkWz71B8bqb40WkitTk%2F1tATzLzext6o%3D&skn=token&se=1675181054482"
     
     // MARK: - device
 //    static var deviceId = "Device01"
@@ -46,7 +46,7 @@ class APIConstant {
         return "SELECT MAX(accelX), MAX(accelY), MAX(accelZ) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
     }
     
-    static func getBodyLocation(location: Int, number: Int = 30, time: String = TelemetryViewModel.times[1], day: Int = 7) -> String {
+    static func getBodyLocation(location: Int, number: Int = 2, time: String = TelemetryViewModel.times[1], day: Int = 7) -> String {
         var timeString = ""
         
         if time == TelemetryViewModel.times[0] {

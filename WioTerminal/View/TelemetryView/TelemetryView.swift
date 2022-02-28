@@ -20,6 +20,8 @@ struct TelemetryView: View {
     
     @State private var viewDidLoad: Bool = true
     
+    @State private var timer: Timer?
+    
     init(){
         UITableView.appearance().backgroundColor = .clear
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(red: 108/255, green: 117/255, blue: 125/255, alpha: 1)]
@@ -240,6 +242,7 @@ struct TelemetryView: View {
         })
         .onAppear {
             getTelemetry()
+            repeatRestAPI()
             if viewDidLoad {
                 viewDidLoad = false
                 viewModel.postQuery()
@@ -248,12 +251,20 @@ struct TelemetryView: View {
         }
     }
     
+    private func repeatRestAPI() {
+        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true,
+                                          block: { (timer) in
+            self.getTelemetry()
+            print("Repeat")
+        })
+    }
+    
     private func getTelemetry() {
         viewModel.getTelemetry(complitionTemp: { value in
             if let rule = device?.rule {
-                if value < Int (rule.ruleTempLow) - 5 || value > Int(rule.ruleTempHigh) + 5 {
+                if Float(value) < Float(rule.ruleTempLow - 5) || Float(value) > Float(rule.ruleTempHigh + 5) {
                     viewModel.tempColor = Color(hex: Constant.banerRed)
-                } else if value > Int(rule.ruleTempLow) && value < Int(rule.ruleTempHigh) {
+                } else if Float(value) >= Float(rule.ruleTempLow) && Float(value) <= Float(rule.ruleTempHigh) {
                     viewModel.tempColor = Color(hex: Constant.banerGreen)
                 } else {
                     viewModel.tempColor = Color(hex: Constant.banerYellow)
