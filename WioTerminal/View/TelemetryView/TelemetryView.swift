@@ -252,7 +252,7 @@ struct TelemetryView: View {
     }
     
     private func repeatRestAPI() {
-        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true,
+        timer = Timer.scheduledTimer(withTimeInterval: 7.0, repeats: true,
                                           block: { (timer) in
             self.getTelemetry()
             print("Repeat")

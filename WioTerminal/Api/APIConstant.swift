@@ -29,7 +29,7 @@ class APIConstant {
             timeString = "H"
         }
         
-        return "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
+        return "SELECT MAX(temp), AVG(temp), MAX(humi), MAX(light) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
     }
     
     static func getBodyAccel(number: Int, time: String, day: Int) -> String {
@@ -43,7 +43,7 @@ class APIConstant {
             timeString = "H"
         }
         
-        return "SELECT MAX(accelX), MAX(accelY), MAX(accelZ) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND temp > 0 GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
+        return "SELECT MAX(accelX), MAX(accelY), MAX(accelZ) FROM %@ WHERE WITHIN_WINDOW(P\(day)D) AND GROUP BY WINDOW(PT\(number)\(timeString)) ORDER BY $ts ASC"
     }
     
     static func getBodyLocation(location: Int, number: Int = 2, time: String = TelemetryViewModel.times[1], day: Int = 7) -> String {

@@ -249,6 +249,9 @@ class TelemetryViewModel: ObservableObject {
                         self.postQueryLocation(location: self.timeLoop, complition: complition)
                     }
                 } else {
+                    if self.timeLoop == 9 {
+                        break
+                    }
                     let mockItems = PositionModel.mockItems()
                     DispatchQueue.main.async {
                         for i in self.timeLoop...mockItems.count {
@@ -282,8 +285,9 @@ class TelemetryViewModel: ObservableObject {
                     }
                 }
             case let .failure(err):
-                self.tempDatas.removeAll()
-                self.humiDatas.removeAll()
+                self.humiDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+                self.tempDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
+                self.lightDatas = [("",17), ("",23), ("",24), ("",20), ("",22), ("",21), ("",17)]
                 printDebug("faild, body: \(body)")
                 print(err.localizedDescription)
             }
@@ -326,6 +330,9 @@ class TelemetryViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.queryItems = telemetry?.results ?? []
 //                    self.tempItems = self.queryItems.map({ $0.temp ?? 0 })
+                    guard self.queryItems.count > 0 else {
+                        return
+                    }
                     self.tempDatas.removeAll()
                     self.humiDatas.removeAll()
                     self.lightDatas.removeAll()

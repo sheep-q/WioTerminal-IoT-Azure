@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D71E8C3-58A6-4C4E-825F-0ABD837FEE0E"
+            uuid = "82F18E43-E802-4A08-A0BA-59D1055EF28E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WioTerminal/View/TelemetryView/Map/TransportViewRow.swift"
+            filePath = "WioTerminal/View/TelemetryView/TelemetryViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "postQuery(body:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
