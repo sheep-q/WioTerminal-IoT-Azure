@@ -258,13 +258,13 @@ struct MonitorView: View {
                                         .shadow(color: Color(hex: "e5e5e5"), radius: 2, x: -1, y: 1.5)
                                     
                                     VStack {
-                                        Image("pump")
+                                        Image("relays")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 40)
+                                            .frame(width: 55)
                                             .padding(10)
                                         
-                                        Text("Máy bơm")
+                                        Text("Rơ le")
                                             .font(.custom(Font.nunitoRegular, size: 15))
                                             .foregroundColor(Color(hex: Constant.greyColor))
                                         
