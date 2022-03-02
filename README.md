@@ -2,7 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE)
 
-This application help you to connect your [Wio Terminal](https://www.seeedstudio.com/Wio-Terminal-p-4509.html) from Seeed to [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub). It is built on top of the [Azure SDK for Embedded C](https://github.com/Azure/azure-sdk-for-c), a small footprint, easy-to-port library for communicating with Azure services.
+## Run
+Run in Xcode 13.1
+
+This application help you to connect your IoT device [Wio Terminal](https://www.seeedstudio.com/Wio-Terminal-p-4509.html) throgh Azure IoT Central.
 
 ## Author
 
