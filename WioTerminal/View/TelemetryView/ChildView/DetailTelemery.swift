@@ -108,9 +108,13 @@ struct DetailTelemery: View {
                                             let time = TelemetryViewModel.times[viewModel.time]
                                             let day = TelemetryViewModel.days[viewModel.day]
                                             
-                                            let body = APIConstant.getBody(number: number, time: time, day: day)
+                                            var body = APIConstant.getBody(number: number, time: time, day: day)
                                             if navigationTitle == .location {
                                                 viewModel.postQueryDetailLocation(location: self.location)
+                                            } else if navigationTitle == .acccel {
+                                                body = APIConstant.getBodyAccel(number: number, time: time, day: day)
+//                                                body = "SELECT MAX(accelX), MAX(accelY), MAX(accelZ) FROM dtmi:modelDefinition:ebhapzpv:hxyjnehnw4 WHERE WITHIN_WINDOW(P5D) GROUP BY WINDOW(PT1H) ORDER BY $ts ASC"
+                                                viewModel.postQueryAccel(body: body)
                                             } else {
                                                 viewModel.postQuery(body: body)
                                             }
