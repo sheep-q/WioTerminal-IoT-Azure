@@ -55,7 +55,7 @@ struct ThirdView: View {
                             }
                             Section(header: Text("Resouce")) {
                                 HStack {
-                                    Link("Wio Hust App - IoT Device", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Wio Hust App - IoT Device", destination: URL(string: "https://github.com/QuangNguyeen/WioTerminal-IoT-Azure")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("github")
@@ -87,7 +87,7 @@ struct ThirdView: View {
                             
                             Section(header: Text("Báo cáo Đồ án")) {
                                 HStack {
-                                    Link("Đồ_án.dox", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Đồ_án.dox", destination: URL(string: "https://husteduvn-my.sharepoint.com/:w:/g/personal/quang_nv174138_sis_hust_edu_vn/ETJ_ZQdZKIlIlC3sXzwO4LABqfO2U-W_jc76LE1EaScTHQ?e=YEdSR0")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("word")
@@ -97,7 +97,7 @@ struct ThirdView: View {
                                 }
                                 
                                 HStack {
-                                    Link("Đồ_án.pdf", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Đồ_án.pdf", destination: URL(string: "https://husteduvn-my.sharepoint.com/:b:/g/personal/quang_nv174138_sis_hust_edu_vn/EQGdTaUuzrFPjYjXg0oFZcYBGw3fJPblEo0TH5TrdCXRCQ?e=vcTXg2")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("pdf")
@@ -107,7 +107,7 @@ struct ThirdView: View {
                                 }
                                 
                                 HStack {
-                                    Link("Đồ_án.pptx", destination: URL(string: "https://github.com/QuangNguyeen/Azure-IO-TSmartGarden-")!)
+                                    Link("Đồ_án.pptx", destination: URL(string: "https://husteduvn-my.sharepoint.com/:b:/g/personal/quang_nv174138_sis_hust_edu_vn/EVKy3lb2twxFvEHY1VoxvEQBZe5hmBxJc9Heob4JYtJMdA?e=xFQPP9")!)
                                         .foregroundColor(.black)
                                     Spacer()
                                     Image("pptx")
