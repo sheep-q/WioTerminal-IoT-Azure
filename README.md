@@ -15,7 +15,7 @@ This application help you to connect your IoT device [Wio Terminal](https://www.
 - Ngành: KT Điều khiển & Tự động hoá
 - Khoá: K62
 - Facebook: [@quangSheep](https://www.facebook.com/quangSheep/)
-- LinkedIn: [@nguyễn-quang](https://www.linkedin.com/in/nguy%E1%BB%85n-quang-515565188/)
+- LinkedIn: [@nguyễn-quang](https://www.linkedin.com/in/nguyen-quang-515565188/)
 - Github: [@nguyễn-quang](https://github.com/QuangNguyeen)!
 
 ## Image
