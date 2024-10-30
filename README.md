@@ -1,4 +1,4 @@
-# Đồ án tốt nghiệp 2022-1 Trường Điện - Điện Tử. Đại học Bách Khoa Hà Nội - Wio Hust
+# Đồ án tốt nghiệp 2022-1. Đại học Bách Khoa Hà Nội - Wio Hust
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE)
 
